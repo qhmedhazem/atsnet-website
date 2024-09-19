@@ -22,7 +22,7 @@ export const useAuth = () => {
 
     try {
       const res = await signIn("credentials", {
-        redirect: true,
+        redirect: false,
         email: options.email,
         password: options.password,
       });

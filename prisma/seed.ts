@@ -4,12 +4,13 @@ const prisma = new PrismaClient();
 
 async function main() {
   // Example seed data
-  await prisma.user.create({
+  await prisma.annoncement.create({
     data: {
-      email: "ahmedhazemcoding@gmail.com",
-      username: "qhmedhazem",
-      fullname: "أحمد حازم احمد محمد علي",
-      password: "$2a$12$4hScssJOXTB/8elIqXjScuIyfnoNixFTgB2nDWjKXZMJEPSPal29K", // hashed password
+      title: "qhmedhazem",
+      createdAt: new Date(),
+      published: true,
+      content: "أحمد حازم احمد محمد علي",
+      authorId: '66ec7a89d96cc81629325931'
     },
   });
 
