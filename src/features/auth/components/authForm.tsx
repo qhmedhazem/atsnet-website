@@ -45,7 +45,7 @@ const AuthForm = () => {
             <FormItem>
               <FormLabel>Password</FormLabel>
               <FormControl>
-                <Input placeholder="Password" {...field} />
+                <Input placeholder="Password" type="password" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -53,7 +53,7 @@ const AuthForm = () => {
         />
         <Button
           isLoading={mutation.isPending}
-          disabled={mutation.isSuccess || mutation.isError}
+          disabled={mutation.isSuccess}
           type="submit"
           size="lg"
         >

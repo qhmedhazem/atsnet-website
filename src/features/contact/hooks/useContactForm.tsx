@@ -5,32 +5,16 @@ import { z } from "zod";
 import { useMutation } from "@tanstack/react-query";
 import fetch from "@/lib/fetch";
 import { AxiosError } from "axios";
-
-export const contactSchema = z.object({
-  fullname: z
-    .string()
-    .min(1, { message: "Full name is required" })
-    .max(100, { message: "Full name must be at most 100 characters" }),
-  email: z.string().email({ message: "Invalid email address" }),
-  phone: z
-    .string()
-    .min(10, { message: "Phone number must be at least 10 characters" })
-    .max(15, { message: "Phone number must be at most 15 characters" })
-    .optional(),
-  message: z
-    .string()
-    .min(1, { message: "Message is required" })
-    .max(2500, { message: "Message must be at most 2500 characters" }),
-});
+import { contactSchema } from "../validation/contactSchema";
 
 export const useContactForm = () => {
-  const form = useForm<z.infer<typeof contactSchema>>({
+  const form = useForm<contactSchema>({
     resolver: zodResolver(contactSchema),
   });
   const [serverError, setServerError] = useState("");
 
   const mutation = useMutation({
-    mutationFn: async (data: z.infer<typeof contactSchema>) => {
+    mutationFn: async (data: contactSchema) => {
       const response = await fetch({
         method: "POST",
         url: "/api/contact",

@@ -6,8 +6,9 @@ async function main() {
   // Example seed data
   await prisma.user.create({
     data: {
-      email: "user@example.com",
-      name: "John Doe",
+      email: "ahmedhazemcoding@gmail.com",
+      username: "qhmedhazem",
+      fullname: "أحمد حازم احمد محمد علي",
       password: "$2a$10$e3B7rG8kxjLq8u0hQ1k9IeO3G5z0oF9D.yK/dMIMvJd/DN3kGJxjO", // hashed password
     },
   });

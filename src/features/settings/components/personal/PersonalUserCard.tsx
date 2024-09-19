@@ -6,21 +6,19 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/Avatar";
 import { Drawer, DrawerContent } from "@/components/ui/Drawer";
 import { UsernameChangeModal } from "./username/UsernameChangeModal";
 import { PasswordChangeModal } from "./password/PasswordChangeModal";
+import { User } from "next-auth";
 
 interface Props {
-  user: IUser;
+  user: User;
 }
 
-type FieldToEdit = "username" | "password";
-
 const PersonalUserCard: FC<Props> = ({ user }) => {
-  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  const [editingField, setEditingField] = useState("");
+  console.log(user);
 
   return (
     <div className="flex items-center gap-4 p-4 bg-accent rounded-lg shadow-md">
       <Avatar className="w-16 h-16">
-        <AvatarImage src={user.avatarURL} />
+        <AvatarImage src={user.avatarURL || ""} />
         <AvatarFallback>{user.fullname[0]}</AvatarFallback>
       </Avatar>
       <div className="flex-grow">
