@@ -54,7 +54,7 @@ export const authOptions: AuthOptions = {
   },
   callbacks: {
     redirect() {
-      return "/user/personal";
+      return "/settings/personal";
     },
     async jwt({ token, user }) {
       if (user) {

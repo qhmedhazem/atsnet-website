@@ -9,7 +9,7 @@ async function main() {
       email: "ahmedhazemcoding@gmail.com",
       username: "qhmedhazem",
       fullname: "أحمد حازم احمد محمد علي",
-      password: "$2a$10$e3B7rG8kxjLq8u0hQ1k9IeO3G5z0oF9D.yK/dMIMvJd/DN3kGJxjO", // hashed password
+      password: "$2a$12$4hScssJOXTB/8elIqXjScuIyfnoNixFTgB2nDWjKXZMJEPSPal29K", // hashed password
     },
   });
 

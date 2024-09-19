@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { signIn } from "next-auth/react";
-import { useRouter } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 
 interface SignInOptions {
   email: string;
@@ -22,7 +22,7 @@ export const useAuth = () => {
 
     try {
       const res = await signIn("credentials", {
-        redirect: false,
+        redirect: true,
         email: options.email,
         password: options.password,
       });
@@ -35,7 +35,6 @@ export const useAuth = () => {
       }
 
       setIsSuccess(true);
-      router.push("/admin");
     } catch (error) {
       console.error("Sign in error:", error);
       setError("Something went wrong. Please try again.");

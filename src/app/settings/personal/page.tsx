@@ -1,7 +1,7 @@
 import React, { ReactNode } from "react";
 import { Separator } from "@/components/ui/Separator";
 import PersonalUserCard from "@/features/settings/components/personal/PersonalUserCard";
-import authOptions from "@/lib/authOptions";
+import { authOptions } from "@/lib/authOptions";
 import { getServerSession, Session } from "next-auth";
 
 interface Props {
