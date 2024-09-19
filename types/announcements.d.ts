@@ -13,3 +13,14 @@ interface IEvent {
   registerLink?: stirng;
   date: Date;
 }
+
+interface IUser {
+  id: string;
+  fullname: string;
+  username: string;
+  email: string;
+  password: string; // hashed
+  lastPasswordChange: Date;
+  createdAt: Date;
+  updatedAt: Date;
+}

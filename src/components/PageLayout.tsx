@@ -19,7 +19,7 @@ export const PageLayout: FC<Props> = ({
   ...props
 }) => {
   return (
-    <div>
+    <div id="pageLayout">
       <header
         className="relative"
         style={{

@@ -10,7 +10,6 @@ export default function About() {
       imageAlt="test"
       title="Contact Us"
       description="Contact with school staff."
-      className="mt-8 w-full flex flex-col items-center"
     >
       <h1 className="text-3xl">Let's Start Converstion.</h1>
       <div className="mt-8 gap-8 flex flex-col w-full lg:grid lg:grid-cols-2">

@@ -1,11 +1,11 @@
 "use client";
-import Image from "next/image";
-import { Carousel, Typography, Button } from "@material-tailwind/react";
+import { Carousel } from "@material-tailwind/react";
 import { CarouselItem } from "./CarouselItem";
 
 const HeroSection = () => {
   return (
     <Carousel
+      id="pageLayout"
       className="w-screen h-screen"
       prevArrow={() => null}
       nextArrow={() => null}

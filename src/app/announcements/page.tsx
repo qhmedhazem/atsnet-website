@@ -69,8 +69,8 @@ export default function Announcements() {
           events={[
             {
               id: "1234",
-              title: "Hello world",
-              description: "Hello tany",
+              title: "جلسة حول المدرسة وطريقة التقديم",
+              description: "المقدم: عبدالرحمن وليد من الصف الرابع الكترونيات",
               registerLink: "https://zoom.com/",
               date: new Date("2024-09-22"),
             },

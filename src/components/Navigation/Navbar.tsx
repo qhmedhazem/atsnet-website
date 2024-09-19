@@ -1,12 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useScroll, useMotionValueEvent } from "framer-motion";
 import Brand from "../Brand";
 import { NavbarMenu } from "./NavbarMenu";
 import { cn } from "@/lib/utils";
 
 const Navbar = () => {
+  const [isLayoutFound, setIsLayoutFound] = useState(true);
   const [isScrolled, setIsScrolled] = useState(false);
   const { scrollY } = useScroll();
 
@@ -18,11 +19,27 @@ const Navbar = () => {
     }
   });
 
+  useEffect(() => {
+    const checkForLayout = () => {
+      const layoutElement = document.getElementById("pageLayout");
+      setIsLayoutFound(!!layoutElement);
+    };
+
+    checkForLayout();
+    const observer = new MutationObserver(() => {
+      checkForLayout();
+    });
+    observer.observe(document.body, { childList: true, subtree: true });
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
   return (
     <div
       className={cn(
-        "z-20 max-w-full fixed w-screen transition-colors	 duration-300 text-primary-foreground",
-        isScrolled ? "bg-background text-primary" : ""
+        "z-20 max-w-full fixed w-screen transition-colors h-24 duration-300 text-primary-foreground",
+        isScrolled || !isLayoutFound ? "bg-background text-primary" : ""
       )}
     >
       <div className="py-2 lg:py-3 px-6 md:px-16 flex justify-between items-center w-full h-full">
