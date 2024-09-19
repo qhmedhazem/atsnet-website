@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 import {
   NavigationMenu,
@@ -9,6 +10,8 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
   navigationMenuTriggerStyle,
+  NavigationMenuTrigger,
+  NavigationMenuContent,
 } from "@/components/ui/NavigationMenu";
 
 import { cn } from "@/lib/utils";
@@ -18,25 +21,60 @@ export function NavbarMenu() {
     <NavigationMenu className="text-center hidden md:block">
       <NavigationMenuList>
         <NavigationMenuItem>
-          <Link href="/about" legacyBehavior passHref>
+          <NavigationMenuTrigger>About</NavigationMenuTrigger>
+          <NavigationMenuContent>
+            <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
+              <li className="row-span-3">
+                <NavigationMenuLink asChild>
+                  <Link
+                    className="flex h-full w-full select-none flex-col justify-end items-center rounded-md p-3 no-underline outline-none transition-all focus:shadow-md hover:bg-accent focus:bg-accent"
+                    href="/about"
+                  >
+                    <Image
+                      width={108}
+                      height={108}
+                      src="/brand.png"
+                      alt="المدرسة الفنية المتقدمة لتكنولوجيا الطاقة النووية - ATSNET"
+                    />
+                    <div className="mb-2 mt-4 text-lg font-medium">
+                      About School
+                    </div>
+                    <p className="text-sm leading-tight text-muted-foreground">
+                      An introduction to the school’s mission, history, and
+                      dedication to training professionals for Egypt's peaceful
+                      nuclear energy project.
+                    </p>
+                  </Link>
+                </NavigationMenuLink>
+              </li>
+              <ListItem href="/academics" title="Academics">
+                Overview of the five-year curriculum, practical training, and
+                specialized labs in nuclear technology and engineering.
+              </ListItem>
+              <ListItem href="/nuclearpowerplant" title="Nuclear Power Plant">
+                Details the school’s connection to Egypt’s nuclear plant and the
+                career paths available for graduates.
+              </ListItem>
+              <ListItem href="/campus" title="Campus">
+                A look at the school's state-of-the-art campus, including
+                classrooms, labs, dormitories, and student amenities.
+              </ListItem>
+            </ul>
+          </NavigationMenuContent>
+        </NavigationMenuItem>
+
+        <NavigationMenuItem>
+          <Link href="/announcements" legacyBehavior passHref>
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-              About
+              Announcements
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>
 
         <NavigationMenuItem>
-          <Link href="/academics" legacyBehavior passHref>
+          <Link href="/admission" legacyBehavior passHref>
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-              Academics
-            </NavigationMenuLink>
-          </Link>
-        </NavigationMenuItem>
-
-        <NavigationMenuItem>
-          <Link href="/campus" legacyBehavior passHref>
-            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-              Campus Life
+              Admission
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>
@@ -50,9 +88,9 @@ export function NavbarMenu() {
         </NavigationMenuItem>
 
         <NavigationMenuItem>
-          <Link href="/admission" legacyBehavior passHref>
+          <Link href="/contact" legacyBehavior passHref>
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-              Admission
+              Contact us
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>

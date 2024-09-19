@@ -4,7 +4,6 @@ import { Alexandria } from "next/font/google";
 import NextTopLoader from "nextjs-toploader";
 
 import { Toaster } from "@/components/Toast/Toaster";
-import Backdrop from "@/components/Backdrop";
 import Navbar from "@/components/Navigation/Navbar";
 import ReactQueryProvider from "@/providers/ReactQueryProvider";
 import ModalWrapper from "@/components/Modal/ModalWrapper";

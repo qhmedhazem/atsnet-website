@@ -1,4 +1,9 @@
 import Resizer from "react-image-file-resizer";
+import dayjs from "dayjs";
+import relativeTime from "dayjs/plugin/relativeTime";
+
+dayjs.extend(relativeTime);
+
 import { twMerge } from "tailwind-merge";
 import { type ClassValue, clsx } from "clsx";
 
@@ -52,3 +57,20 @@ export const resizeAvatar = (file: File): Promise<string> =>
       "base64"
     );
   });
+
+export function getDayStartEndDates(givenDate: Date) {
+  const startOfDay = new Date(givenDate);
+  const endOfDay = new Date(givenDate);
+
+  startOfDay.setHours(0, 0, 0, 0);
+  endOfDay.setHours(23, 59, 59, 999);
+
+  return {
+    startOfDay,
+    endOfDay,
+  };
+}
+
+export function getRelativeTime(date: Date) {
+  return dayjs(date).from(dayjs());
+}

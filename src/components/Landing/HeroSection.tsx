@@ -1,12 +1,37 @@
 "use client";
-import { AnimatePresence, motion } from "framer-motion";
-import LandingSection from "./LandingSection";
+import Image from "next/image";
+import { Carousel, Typography, Button } from "@material-tailwind/react";
+import { CarouselItem } from "./CarouselItem";
 
 const HeroSection = () => {
   return (
-    <LandingSection className="max-w-2xl text-center px-0">
-      <AnimatePresence></AnimatePresence>
-    </LandingSection>
+    <Carousel
+      className="w-screen h-screen"
+      prevArrow={() => null}
+      nextArrow={() => null}
+      autoplay={true}
+      loop={true}
+      autoplayDelay={10_000}
+    >
+      <CarouselItem
+        title="1234"
+        description="1234"
+        imageSrc="/landing2.jpg"
+        imageAlt="1234"
+      />
+      <CarouselItem
+        title="1234"
+        description="1234"
+        imageSrc="/landing4.jpg"
+        imageAlt="1234"
+      />
+      <CarouselItem
+        title="1234"
+        description="1234"
+        imageSrc="/landing1.jpg"
+        imageAlt="1234"
+      />
+    </Carousel>
   );
 };
 

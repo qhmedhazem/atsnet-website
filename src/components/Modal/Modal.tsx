@@ -60,13 +60,13 @@ const Modal: React.FC<ModalProps> = ({
               duration: 0.2,
               type: "tween",
             }}
-            className=" bg-muted min-w-2xl max-w-[52rem] w-full h-full mx-[auto] place-self-end rounded-t-xl"
+            className=" bg-accent min-w-2xl max-w-[52rem] w-full h-full mx-[auto] place-self-end rounded-t-xl"
           >
             {bannerURL ? (
               <div
                 className="rounded-t-xl overflow-hidden bg-center"
                 style={{
-                  backgroundImage: `linear-gradient(to bottom,transparent 0%,hsl(var(--muted)) 95%, hsl(var(--muted)) 100%), url(${bannerURL})`,
+                  backgroundImage: `linear-gradient(to bottom,transparent 0%,hsl(var(--accent)) 95%, hsl(var(--muted)) 100%), url(${bannerURL})`,
                   backgroundSize: "cover",
                 }}
               >
@@ -98,7 +98,7 @@ const Modal: React.FC<ModalProps> = ({
               </div>
             )}
 
-            <div className="bg-muted px-8 pb-12">{children}</div>
+            <div className="bg-accent px-8 pb-12">{children}</div>
           </motion.div>
         </div>
       )}

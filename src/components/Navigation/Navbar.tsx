@@ -2,10 +2,8 @@
 
 import { useState } from "react";
 import { useScroll, useMotionValueEvent } from "framer-motion";
-
 import Brand from "../Brand";
 import { NavbarMenu } from "./NavbarMenu";
-
 import { cn } from "@/lib/utils";
 
 const Navbar = () => {
@@ -23,8 +21,8 @@ const Navbar = () => {
   return (
     <div
       className={cn(
-        "z-20 max-w-full fixed w-screen transition-all duration-300",
-        isScrolled ? "bg-background border-b border-muted" : ""
+        "z-20 max-w-full fixed w-screen transition-colors	 duration-300 text-primary-foreground",
+        isScrolled ? "bg-background text-primary" : ""
       )}
     >
       <div className="py-2 lg:py-3 px-6 md:px-16 flex justify-between items-center w-full h-full">

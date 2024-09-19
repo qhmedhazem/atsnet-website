@@ -5,7 +5,7 @@ import React from "react";
 const Brand = () => {
   return (
     <Link
-      className="flex gap-4 justify-center items-center text-xl font-bold uppercase"
+      className="flex gap-4 justify-center items-center  uppercase"
       href="/"
     >
       <Image
@@ -15,8 +15,10 @@ const Brand = () => {
         alt="المدرسة الفنية المتقدمة لتكنولوجيا الطاقة النووية - ATSNET"
       />
       <div>
-        <p className="text-2xl">ATSNET</p>
-        <p className="text-xs">Advanced Nuclear Technology School</p>
+        <p className="text-2xl font-bold">ATSNET</p>
+        <p className="text-xs font-light">
+          Advanced Technology School For Nuclear Energy
+        </p>
       </div>
     </Link>
   );
