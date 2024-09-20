@@ -18,7 +18,7 @@ import { cn } from "@/lib/utils";
 
 export function NavbarMenu() {
   return (
-    <NavigationMenu className="text-center hidden md:block">
+    <NavigationMenu className="text-center hidden lg:block">
       <NavigationMenuList>
         <NavigationMenuItem>
           <NavigationMenuTrigger>About</NavigationMenuTrigger>

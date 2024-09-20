@@ -25,7 +25,7 @@ const Navbar = () => {
         isScrolled ? "bg-background text-primary" : ""
       )}
     >
-      <div className="py-2 lg:py-3 px-6 md:px-16 flex justify-between items-center w-full h-full">
+      <div className="py-2 lg:py-3 px-6 md:px-16 flex justify-between items-center w-full h-full gap-16">
         <Brand />
         <NavbarMenu />
       </div>

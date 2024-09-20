@@ -33,9 +33,9 @@ const Footer = () => {
           <div className="max-w-lg flex flex-col items-start gap-2">
             <Brand />
             <p className="text-primary/50">
-              test test test test test test test test test test test test test
-              test test test test test test test test test test test test test
-              test
+              El-Dabaa Nuclear School is a premier institution dedicated to
+              educating and training the next generation of nuclear engineers
+              and scientists.
             </p>
           </div>
           <div className="flex flex-col md:flex-row gap-4 md:gap-12 lg:gap-24">
@@ -51,7 +51,7 @@ const Footer = () => {
           <div className="flex flex-col gap-4 lg:flex-row lg:justify-between text-primary/70">
             <p>© 2024 ATSNET. All rights reserved</p>
             <p>
-              Made with ❤️ by <Link href={getA7medInstagram()}>Ahmed</Link>, and{" "}
+              Developed by <Link href={getA7medInstagram()}>Ahmed</Link>, and{" "}
               <Link href={getMohamedInstagram()}>Mohamed</Link>
             </p>
           </div>
