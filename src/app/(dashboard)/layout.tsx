@@ -19,7 +19,7 @@ export default async function UserLayout({ children }: Props) {
         imageSrc="/landing2.jpg"
         imageAlt="test"
         title="Log in"
-        description="Start logging in if you're an admin."
+        description="Start logging in if you're admin."
         className="mt-8 w-full flex flex-col items-center"
       >
         <h1 className="text-3xl">Login</h1>

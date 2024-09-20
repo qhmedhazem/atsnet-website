@@ -47,6 +47,15 @@ model Event {
   authorId  String   @db.ObjectId
 }
 
+model Message {
+    id        String   @id @default(auto()) @map("_id") @db.ObjectId
+    name      String
+    email     String
+    phone     String
+    content   String
+    replied   Boolean
+    createdAt DateTime @default(now())
+}
 
 enum Role {
   STUDENT
