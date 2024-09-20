@@ -5,6 +5,7 @@ import { Annoncement } from "@prisma/client";
 import { Card, CardContent, CardHeader } from "@/components/ui/Card";
 import { getRelativeTime } from "@/lib/utils";
 import Markdown from "react-markdown";
+import { Badge } from "@/components/ui/Badge";
 
 interface Props {
   announcement: Annoncement;
@@ -17,11 +18,11 @@ const AnnouncementCard: React.FC<Props> = ({ announcement, href }) => {
       <Link href={href || `/announcements/${announcement.id}`}>
         {/* Card Header */}
         <CardHeader className="px-6 pt-6 pb-0">
-          <div className="flex flex-row">
+          <div className="flex flex-row gap-2">
             <h2 className="text-xl font-semibold line-clamp-1">
               {announcement.title}
             </h2>
-            {/* {!announcement.published && } */}
+            {!announcement.published && <Badge>Unpublished</Badge>}
           </div>
           <p className="text-sm font-light line-clamp-1">
             {getRelativeTime(announcement.createdAt)}

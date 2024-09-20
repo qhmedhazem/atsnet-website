@@ -28,10 +28,12 @@ export async function POST(req: NextRequest) {
 
     const newEvent = await prisma.event.create({
       data: {
-        title: validatedData.title,
+        title: validatedData?.title || "Untitled",
         createdAt: new Date(),
-        published: true,
-        content: validatedData.content,
+        date: validatedData?.date ? new Date(validatedData?.date) : new Date(),
+        published: false,
+        content: validatedData?.content || "",
+        registerLink: "",
         author: {
           connect: { id: session.user.id },
         },

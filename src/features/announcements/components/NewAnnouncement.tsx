@@ -3,7 +3,7 @@
 import { FC, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/Button";
-import { useNewAnnouncement } from "../../hooks/useNewAnnouncement";
+import { useNewAnnouncement } from "../hooks/useNewAnnouncement";
 
 interface Props {}
 

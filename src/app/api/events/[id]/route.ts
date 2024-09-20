@@ -34,9 +34,8 @@ export async function PUT(
     const updatedEvent = await prisma.event.update({
       where: { id },
       data: {
-        title: validatedData.title,
+        ...validatedData,
         updatedAt: new Date(),
-        content: validatedData.content,
       },
     });
 
@@ -75,14 +74,6 @@ export async function DELETE(
 
   if (!event)
     return Response.json({ message: "Event not found" }, { status: 404 });
-
-  const userWithEvents = await prisma.user.findUnique({
-    where: { id: session.user.id },
-    include: { events: true },
-  });
-
-  if (!userWithEvents?.events.some((item) => item.id === id))
-    return Response.json({ message: "Missing Access" }, { status: 403 });
 
   try {
     const deletedEvent = await prisma.event.delete({

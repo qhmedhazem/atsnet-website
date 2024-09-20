@@ -4,16 +4,17 @@ import { Event } from "@prisma/client";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/Card";
 import { getRelativeTime } from "@/lib/utils";
 import { LinkButton } from "@/components/ui/Button";
+import Link from "next/link";
+import Markdown from "react-markdown";
 
 interface Props {
   event: Event;
   href?: string;
 }
 
-const EventCard: React.FC<Props> = ({ event }) => {
+const EventCardContent: React.FC<Props> = ({ event, href }) => {
   return (
-    <Card className="w-full mx-auto duration-300 transition-all rounded-lg border border-gray-200">
-      {/* Card Header */}
+    <>
       <CardHeader className="px-6 pt-6 pb-0 space-y-0">
         <div className="w-full flex justify-between">
           <div>
@@ -22,7 +23,7 @@ const EventCard: React.FC<Props> = ({ event }) => {
             </h2>
             <p className="text-sm font-light">{getRelativeTime(event.date)}</p>
           </div>
-          {event.registerLink && (
+          {event.registerLink && !href && (
             <LinkButton href={event.registerLink} target="_blank">
               Register
             </LinkButton>
@@ -31,8 +32,25 @@ const EventCard: React.FC<Props> = ({ event }) => {
       </CardHeader>
 
       <CardContent className="flex flex-col gap-4 px-6 pt-4 pb-4">
-        <p className="text-gray-600 line-clamp-3">{event.content}</p>
+        <Markdown className="text-gray-600 line-clamp-3">
+          {event.content}
+        </Markdown>
       </CardContent>
+    </>
+  );
+};
+
+const EventCard: React.FC<Props> = ({ event, href }) => {
+  return (
+    <Card className="w-full mx-auto duration-300 transition-all rounded-lg border border-gray-200">
+      {/* Card Header */}
+      {href ? (
+        <Link href={`/admin/events/${event.id}`}>
+          <EventCardContent event={event} href={href} />
+        </Link>
+      ) : (
+        <EventCardContent event={event} href={href} />
+      )}
     </Card>
   );
 };

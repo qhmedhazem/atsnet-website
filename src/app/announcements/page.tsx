@@ -4,7 +4,7 @@ import EventsSection from "@/features/events/components/EventsSection";
 import { PageLayout } from "@/components/PageLayout";
 import { Annoncement, Event } from "@prisma/client";
 import { previewAnnouncements } from "@/features/announcements/services/announcementsService";
-import { previewEvents } from "@/features/events/events/eventsService";
+import { previewEvents } from "@/features/events/services/eventsService";
 
 export default async function Announcements() {
   const [announcements, events]: [Annoncement[], Event[]] = await Promise.all([
@@ -20,7 +20,6 @@ export default async function Announcements() {
       description="Stay updated with school admistration announcements."
     >
       <h2 className="text-3xl">Announcements</h2>
-
       <div className="mt-12 gap-4 lg:gap-2 xl:gap-4 flex flex-col-reverse w-full lg:flex-row lg:justify-between">
         {/* Two Grids */}
         <AnnouncementsSection announcements={announcements} />

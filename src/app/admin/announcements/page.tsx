@@ -1,7 +1,7 @@
 import { CRUDLayout } from "@/components/CRUDLayout";
 import List from "@/components/List";
 import AnnouncementCard from "@/features/announcements/components/Announcements/AnnouncementCard";
-import NewAnnouncement from "@/features/announcements/components/Settings/NewAnnouncement";
+import NewAnnouncement from "@/features/announcements/components/NewAnnouncement";
 import { fetchAllAnnouncements } from "@/features/announcements/services/announcementsService";
 
 export default async function AnnouncementsAdministration() {
