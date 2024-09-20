@@ -13,14 +13,17 @@ import {
 } from "@/components/ui/Form";
 import { Input } from "@/components/ui/Input";
 import { ErrorMessage } from "@/components/ui/ErrorMessage";
-import { usePasswordChange } from "@/features/settings/hooks/usePasswordChange";
+import { usePasswordChange } from "@/features/auth/hooks/usePasswordChange";
+import { User } from "@prisma/client";
 
 interface Props {
   onClose?: () => void;
+  user: Partial<User>;
+  sameUser: boolean;
 }
 
-const PasswordChangeForm: FC<Props> = ({ onClose }) => {
-  const { mutation, form, handleSubmit, serverError } = usePasswordChange();
+const PasswordChangeForm: FC<Props> = ({ sameUser, user, onClose }) => {
+  const { mutation, form, handleSubmit, serverError } = usePasswordChange(user);
 
   useEffect(() => {
     if (mutation.isSuccess && onClose) {
@@ -30,30 +33,36 @@ const PasswordChangeForm: FC<Props> = ({ onClose }) => {
 
   return (
     <Form {...form}>
-      <form onSubmit={handleSubmit} className="space-y-4 min-w-fit">
-        <FormField
-          control={form.control}
-          name="password"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Password</FormLabel>
-              <FormControl>
-                <Input
-                  placeholder="Your old password"
-                  type="password"
-                  {...field}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+      <form
+        onSubmit={handleSubmit}
+        onReset={() => onClose?.()}
+        className="space-y-4 min-w-fit"
+      >
+        {sameUser && (
+          <FormField
+            control={form.control}
+            name="password"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Password</FormLabel>
+                <FormControl>
+                  <Input
+                    placeholder="Enter your old password"
+                    type="password"
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+        )}
         <FormField
           control={form.control}
           name="new_password"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Password</FormLabel>
+              <FormLabel>New Password</FormLabel>
               <FormControl>
                 <Input
                   placeholder="Enter new password"
@@ -82,14 +91,22 @@ const PasswordChangeForm: FC<Props> = ({ onClose }) => {
             </FormItem>
           )}
         />
-        <Button
-          isLoading={mutation.isPending}
-          disabled={mutation.isSuccess}
-          type="submit"
-          size="lg"
-        >
-          Confirm
-        </Button>
+        <div className="py-4 flex gap-4">
+          <Button
+            isLoading={mutation.isPending}
+            disabled={mutation.isSuccess}
+            type="submit"
+          >
+            Confirm
+          </Button>
+          <Button
+            disabled={mutation.isSuccess || mutation.isPending}
+            type="reset"
+            variant="secondary"
+          >
+            Cancel
+          </Button>
+        </div>
         {serverError && <ErrorMessage children={serverError} />}
       </form>
     </Form>

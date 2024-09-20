@@ -14,7 +14,7 @@ import {
 } from "@/components/ui/Form";
 import { Input } from "@/components/ui/Input";
 import { ErrorMessage } from "@/components/ui/ErrorMessage";
-import { useUsernameChange } from "@/features/settings/hooks/useUsernameChange";
+import { useUsernameChange } from "@/features/auth/hooks/useUsernameChange";
 import { useAnnouncementInfo } from "../../hooks/useAnnouncementInfo";
 
 interface Props {

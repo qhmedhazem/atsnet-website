@@ -1,18 +1,19 @@
 "use client";
 
 import { FC, useState } from "react";
+import { User } from "@prisma/client";
 import { Button } from "@/components/ui/Button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/Avatar";
 import { Drawer, DrawerContent } from "@/components/ui/Drawer";
 import { PasswordChangeModal } from "./PasswordChangeModal";
-import { User } from "next-auth";
 import { getRelativeTime } from "@/lib/utils";
 
 interface Props {
-  user: User;
+  user: Partial<User>;
+  sameUser: boolean;
 }
 
-const PasswordChangeSection: FC<Props> = ({ user }) => {
+const PasswordChangeSection: FC<Props> = ({ sameUser, user }) => {
   const lastPasswordChange: string = user.lastPasswordChange
     ? getRelativeTime(user.lastPasswordChange)
     : "No Reconds";
@@ -25,7 +26,7 @@ const PasswordChangeSection: FC<Props> = ({ user }) => {
           Last Password Change: {lastPasswordChange}
         </p>
       </div>
-      <PasswordChangeModal />
+      <PasswordChangeModal sameUser={sameUser} user={user} />
     </div>
   );
 };

@@ -9,6 +9,7 @@ import {
   TableRow,
 } from "@/components/ui/Table";
 import { LinkButton } from "@/components/ui/Button";
+import DeleteUser from "../actions/DeleteUser";
 
 interface Props {
   users: Partial<User>[];
@@ -32,7 +33,7 @@ const UsersTable: FC<Props> = ({ users }) => {
             <TableCell>{u.username}</TableCell>
             <TableCell>{u.role}</TableCell>
             <TableCell className="text-right">
-              <LinkButton href={`/admins/users/${u.id}`}>Manage</LinkButton>
+              <LinkButton href={`/admin/users/${u.id}`}>Manage</LinkButton>
             </TableCell>
           </TableRow>
         ))}

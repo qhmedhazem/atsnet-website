@@ -2,11 +2,8 @@
 
 import { FC } from "react";
 
-interface Props {
-  open: boolean;
-}
-
 import * as React from "react";
+import { User } from "@prisma/client";
 
 import useMediaQuery from "@/hooks/use-media-query";
 import { Button } from "@/components/ui/Button";
@@ -28,9 +25,14 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/Drawer";
-import PasswordChangeForm from "./PasswordChangeForm";
+import UsernameChangeForm from "./UsernameChangeForm";
 
-export function PasswordChangeModal() {
+interface Props {
+  user: Partial<User>;
+  sameUser: boolean;
+}
+
+export const UsernameChangeModal: FC<Props> = ({ sameUser, user }) => {
   const [open, setOpen] = React.useState(false);
   const isDesktop = useMediaQuery("(min-width: 768px)");
 
@@ -38,14 +40,20 @@ export function PasswordChangeModal() {
     return (
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogTrigger asChild>
-          <Button className="mb-2">Change Password</Button>
+          <Button className="mb-2">Change Username</Button>
         </DialogTrigger>
         <DialogContent className="sm:max-w-[425px]">
           <DialogHeader>
-            <DialogTitle>Change Password</DialogTitle>
-            <DialogDescription>Change your password.</DialogDescription>
+            <DialogTitle>Change Username</DialogTitle>
+            <DialogDescription>
+              Change your handle. Click confirm when you're done.
+            </DialogDescription>
           </DialogHeader>
-          <PasswordChangeForm onClose={() => setOpen(false)} />
+          <UsernameChangeForm
+            sameUser={sameUser}
+            user={user}
+            onClose={() => setOpen(false)}
+          />
         </DialogContent>
       </Dialog>
     );
@@ -54,14 +62,20 @@ export function PasswordChangeModal() {
   return (
     <Drawer open={open} onOpenChange={setOpen}>
       <DrawerTrigger asChild>
-        <Button className="mb-2">Edit Password</Button>
+        <Button className="mb-2">Change Username</Button>
       </DrawerTrigger>
       <DrawerContent>
         <DrawerHeader className="text-left">
-          <DrawerTitle>Change Password</DrawerTitle>
-          <DrawerDescription>Change your password.</DrawerDescription>
+          <DrawerTitle>Change Username</DrawerTitle>
+          <DrawerDescription>
+            Change your handle. Click confirm when you're done.
+          </DrawerDescription>
         </DrawerHeader>
-        <PasswordChangeForm onClose={() => setOpen(false)} />
+        <UsernameChangeForm
+          sameUser={sameUser}
+          user={user}
+          onClose={() => setOpen(false)}
+        />
         <DrawerFooter className="pt-2">
           <DrawerClose asChild>
             <Button variant="outline">Cancel</Button>
@@ -70,4 +84,4 @@ export function PasswordChangeModal() {
       </DrawerContent>
     </Drawer>
   );
-}
+};

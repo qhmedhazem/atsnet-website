@@ -1,37 +1,23 @@
 import { useState } from "react";
+import { User } from "@prisma/client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { z } from "zod";
 import { useMutation } from "@tanstack/react-query";
 import fetch from "@/lib/fetch";
 import { AxiosError } from "axios";
+import { passwordChangeSchema } from "../validation/userSettingsSchema";
 
-const usernameRegex = /^[a-zA-Z0-9_]{3,16}$/;
-
-const usernameChangeSchema = z.object({
-  username: z
-    .string()
-    .min(3, { message: "Username must be at least 3 characters long" })
-    .max(16, { message: "Username must be at most 16 characters long" })
-    .regex(usernameRegex, {
-      message:
-        "Username can only contain alphanumeric characters and underscores",
-    }),
-
-  password: z.string(),
-});
-
-export const useUsernameChange = () => {
-  const form = useForm<z.infer<typeof usernameChangeSchema>>({
-    resolver: zodResolver(usernameChangeSchema),
+export const usePasswordChange = (user: Partial<User>) => {
+  const form = useForm<passwordChangeSchema>({
+    resolver: zodResolver(passwordChangeSchema),
   });
   const [serverError, setServerError] = useState("");
 
   const mutation = useMutation({
-    mutationFn: async (data: z.infer<typeof usernameChangeSchema>) => {
+    mutationFn: async (data: passwordChangeSchema) => {
       const response = await fetch({
-        method: "POST",
-        url: "/api/user/username",
+        method: "PUT",
+        url: `/users/${user.id}`,
         data: data,
       });
       return response;
@@ -50,7 +36,7 @@ export const useUsernameChange = () => {
     },
   });
 
-  const onSubmit = (data: z.infer<typeof usernameChangeSchema>) => {
+  const onSubmit = (data: passwordChangeSchema) => {
     mutation.mutate(data);
   };
 
