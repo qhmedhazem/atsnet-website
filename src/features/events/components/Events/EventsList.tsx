@@ -1,21 +1,11 @@
 import React, { FC } from "react";
-import relativeTime from "dayjs/plugin/relativeTime";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/Card";
-import { getRelativeTime } from "@/lib/utils";
-import Link from "next/link";
-import { LinkButton } from "@/components/ui/Button";
-import EventCard from "./EventCard";
+import { Event } from "@prisma/client";
+
+import EventCard from "../../../events/components/Events/EventCard";
 import NoData from "@/components/NoData";
 
 interface Props {
-  events: IEvent[];
+  events: Event[];
 }
 
 const EventsList: FC<Props> = ({ events }) => {

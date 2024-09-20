@@ -1,9 +1,16 @@
-import { PageLayout } from "@/components/PageLayout";
 import AnnouncementsSection from "@/features/announcements/components/AnnouncementsSection";
-import EventsSection from "@/features/announcements/components/EventsSection";
+import EventsSection from "@/features/events/components/EventsSection";
 
-export default function Announcements() {
-  // fetch announcments from db
+import { PageLayout } from "@/components/PageLayout";
+import { Annoncement, Event } from "@prisma/client";
+import { previewAnnouncements } from "@/features/announcements/services/announcementsService";
+import { previewEvents } from "@/features/events/events/eventsService";
+
+export default async function Announcements() {
+  const [announcements, events]: [Annoncement[], Event[]] = await Promise.all([
+    previewAnnouncements(),
+    previewEvents(),
+  ]);
 
   return (
     <PageLayout
@@ -16,66 +23,8 @@ export default function Announcements() {
 
       <div className="mt-12 gap-4 lg:gap-2 xl:gap-4 flex flex-col-reverse w-full lg:flex-row lg:justify-between">
         {/* Two Grids */}
-        <AnnouncementsSection
-          announcements={[
-            {
-              id: "1234",
-              title: "العام الدراسي الجديد",
-              content: `السلام عليكم ورحمه الله وبركاته
-نهنئ ابنائنا الطلبه بالعام الدراسى الجديد  ونتمنى لهم مزيد من التقدم و الرقى
-نحيط علم الجميع من ابنائنا والساده اولياء الامور
-بان التجمع يوم السبت باذن الله بجوار موقف الاسكندريه و وكذلك التجمع بمطروح الساعه الرابعه والنصف مساء والتحرك الساعه الخامسه مساء 
-التعليمات
-الالتزام بالمظهر الحسن والتعامل برقى مع المشرفين
-لايسمح باى مخالفات فى الزى مثل ارتداء الشورت والشبشب والسلاسل والانسيالات والحظاظات والبنطلون كات ان( المقطع)
-حلاقه الذقن والشعر  ولايسمح باى حلاقه غير لائقه
-ممنوع تواجد الاسلحه والادوات الحاده والسخانات و الاندومى والمشروبات الغازيه والشيبسى ولن يسمح بدخولهم   المدرسه وسيتم التفتيش من قبل امن المدرسه
-ممنوع طلب الماكولات والمشروبات من خارج المدرسه
-الالتزام بمواعيد الصحيان والطابور والافطار
-يتم النزول الساعه السادسه والنصف الى المطعم بزى المدرسه والافطار والتحرك الى ارض الطابور ولا يسمح لدخول المبنى السكنى بعد الافطار
-لايسمح بدخول المبنى السكنى خلال اليوم الدراسى بدون اذن من الدكتور اوالسيد مدير المدرسه ومن يخالف ذلك يعرض نفسه للعقاب كما نصت لائحه الانظباط
-الزى المدرسى:-
-بنطلون اسود جينز مناسب اوكلاسيك
-قميص ابيض  ساده مناسب
-كرافت نبيتى
-حذاء اسود
-سويت شيرت نبيتى 
-يجب الاتزام بمواعيد الحصص والتواجد كل فى مكانه وفى حاله حدوث اى مشكله يجب التوجه الى  المشرف العام وطاقم الاشراف لكل دور`,
-              imageURL: undefined,
-              date: new Date("2024-09-22"),
-            },
-            {
-              id: "1234",
-              title: "موعد الاوتوبيسات",
-              content: `السلام عليكم
-ابنائى الطلبه
-السبت باذن الله التجمع الساعه 5 مساء فى اسكندريه مكان التجمع المعتاد بعد الموقف  وكذلك مطروح 
-كل طالب له مقعد مخصص يجلس فيه
-يجب الظهور بمظهر لائق
-يجب حلاقه الشعر والذقن
-ممنوع ارتداء الشورت والسلاسل والحظاظات  اوالشبشب منعا باتا داخل الباص والمدرسه 
-الحرص على تواجد الزى المدرسى وارتدائه  داخل المدرسه وذلك لتنفيذ التعليمات
-عدم اصطحاب الاسلحه والادوات الحاده والسخانات
-لايسمح بطلب اى ماكولات من خارج المدرسه
-لايسمح بوجود الشيبسى والمشروبات الغازيه والاندومى
-الالتزام بمواعيد الطابور والافطار والحصص الدراسيه 
-عدم التواجد فى الفندق فى اوقات الدراسه الا باذن من الطبيب او مدير المدرسه ومن يخالف ذلك يتعرض الى المسائله والعقاب كما تنص لائحه الانضباط`,
-              imageURL: undefined,
-              date: new Date("2024-09-19"),
-            },
-          ]}
-        />
-        <EventsSection
-          events={[
-            {
-              id: "1234",
-              title: "جلسة حول المدرسة وطريقة التقديم",
-              description: "المقدم: عبدالرحمن وليد من الصف الرابع الكترونيات",
-              registerLink: "https://zoom.com/",
-              date: new Date("2024-09-22"),
-            },
-          ]}
-        />
+        <AnnouncementsSection announcements={announcements} />
+        <EventsSection events={events} />
       </div>
     </PageLayout>
   );

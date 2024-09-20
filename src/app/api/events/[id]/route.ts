@@ -28,14 +28,6 @@ export async function PUT(
   if (!event)
     return Response.json({ message: "Event not found" }, { status: 404 });
 
-  const userWithEvents = await prisma.user.findUnique({
-    where: { id: session.user.id },
-    include: { events: true },
-  });
-
-  if (!userWithEvents?.events.some((item) => item.id === id))
-    return Response.json({ message: "Missing Access" }, { status: 403 });
-
   try {
     const validatedData = eventsSchema.parse(body);
 
@@ -70,7 +62,6 @@ export async function DELETE(
 ) {
   const { id } = params;
   const session: Session | null = await getServerSession(authOptions);
-  const body = await req.json();
 
   if (!session)
     return Response.json({ message: "Unauthorized" }, { status: 401 });

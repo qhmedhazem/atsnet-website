@@ -1,12 +1,14 @@
-import axios, { AxiosRequestConfig } from "axios";
+import axios, { AxiosResponse, AxiosRequestConfig } from "axios";
 
-const base_uri = "https://www.atsnet.net/api/v1";
+const base_uri = "/api";
 const instance = axios.create({
   baseURL: base_uri,
 });
 
-const fetch = (options: AxiosRequestConfig<any>) => {
+function fetch<T = any, D = any, E = any>(
+  options: AxiosRequestConfig<D>
+): Promise<AxiosResponse<T, E>> {
   return instance(options);
-};
+}
 
 export default fetch;

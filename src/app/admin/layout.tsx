@@ -5,6 +5,7 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/authOptions";
 import { PageLayout } from "@/components/PageLayout";
 import AuthForm from "@/features/auth/components/AuthForm";
+import NoAccess from "@/components/NoAccess";
 
 interface Props {
   children: ReactNode;
@@ -29,6 +30,8 @@ export default async function UserLayout({ children }: Props) {
       </PageLayout>
     );
   }
+
+  if (!["ADMIN", "STAFF"].includes(session.user.role)) return <NoAccess />;
 
   return <SettingsLayout children={children} />;
 }

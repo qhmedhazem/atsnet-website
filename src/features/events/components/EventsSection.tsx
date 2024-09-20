@@ -1,31 +1,15 @@
 "use client";
 
 import { FC, HTMLAttributes, useMemo, useState } from "react";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
-
-import { Input } from "@/components/ui/Input";
-import { Textarea } from "@/components/ui/Textarea";
-import { ErrorMessage } from "@/components/ui/ErrorMessage";
-import { Button } from "@/components/ui/Button";
-import { Calendar } from "@/components/ui/Calendar";
-import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/Form";
-
-import { cn } from "@/lib/utils";
 import EventModal from "./Events/EventModal";
+
+import { Calendar } from "@/components/ui/Calendar";
+import { Event } from "@prisma/client";
 import { useEvents } from "../hooks/useEvents";
+import { cn } from "@/lib/utils";
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
-  events: IEvent[];
+  events: Event[];
 }
 
 const EventsSection: FC<Props> = ({ events, ...props }) => {

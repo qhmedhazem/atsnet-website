@@ -28,10 +28,10 @@ export async function POST(req: NextRequest) {
 
     const newAnnoncement = await prisma.annoncement.create({
       data: {
-        title: validatedData.title,
+        title: validatedData?.title || "Untitled",
         createdAt: new Date(),
-        published: true,
-        content: validatedData.content,
+        published: false,
+        content: validatedData?.content || "",
         author: {
           connect: { id: session.user.id },
         },
@@ -43,8 +43,7 @@ export async function POST(req: NextRequest) {
     if (error instanceof z.ZodError) {
       return Response.json(
         {
-          message: "Validation errors",
-          errors: error.errors,
+          message: error.format()._errors?.toString() || "Something went wrong",
         },
         { status: 400 }
       );

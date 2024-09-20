@@ -1,19 +1,13 @@
 import React from "react";
-import relativeTime from "dayjs/plugin/relativeTime";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/Card";
+import { Event } from "@prisma/client";
+
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/Card";
 import { getRelativeTime } from "@/lib/utils";
-import Link from "next/link";
 import { LinkButton } from "@/components/ui/Button";
 
 interface Props {
-  event: IEvent;
+  event: Event;
+  href?: string;
 }
 
 const EventCard: React.FC<Props> = ({ event }) => {
@@ -37,7 +31,7 @@ const EventCard: React.FC<Props> = ({ event }) => {
       </CardHeader>
 
       <CardContent className="flex flex-col gap-4 px-6 pt-4 pb-4">
-        <p className="text-gray-600 line-clamp-3">{event.description}</p>
+        <p className="text-gray-600 line-clamp-3">{event.content}</p>
       </CardContent>
     </Card>
   );

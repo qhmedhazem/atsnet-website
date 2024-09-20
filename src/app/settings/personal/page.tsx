@@ -1,8 +1,10 @@
 import React, { ReactNode } from "react";
-import { Separator } from "@/components/ui/Separator";
-import PersonalUserCard from "@/features/settings/components/personal/PersonalUserCard";
-import { authOptions } from "@/lib/authOptions";
 import { getServerSession, Session } from "next-auth";
+
+import PersonalSettings from "@/features/settings/components/personal/PersonalSettings";
+import { Separator } from "@/components/ui/Separator";
+
+import { authOptions } from "@/lib/authOptions";
 
 interface Props {
   children: ReactNode;
@@ -17,7 +19,7 @@ export default async function UserPersonalSettings({ children }: Props) {
       <h1 className="text-3xl">Personal Settings</h1>
       <Separator />
       {/* Username */}
-      <PersonalUserCard user={session.user} />
+      <PersonalSettings user={session.user} />
       {/* Password */}
     </div>
   );

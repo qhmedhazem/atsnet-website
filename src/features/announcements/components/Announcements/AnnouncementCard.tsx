@@ -1,36 +1,37 @@
 import React from "react";
-import relativeTime from "dayjs/plugin/relativeTime";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/Card";
-import { getRelativeTime } from "@/lib/utils";
 import Link from "next/link";
 
+import { Annoncement } from "@prisma/client";
+import { Card, CardContent, CardHeader } from "@/components/ui/Card";
+import { getRelativeTime } from "@/lib/utils";
+import Markdown from "react-markdown";
+
 interface Props {
-  announcement: IAnnouncement;
+  announcement: Annoncement;
+  href?: string;
 }
 
-const AnnouncementCard: React.FC<Props> = ({ announcement }) => {
+const AnnouncementCard: React.FC<Props> = ({ announcement, href }) => {
   return (
     <Card className="w-full cursor-pointer mx-auto duration-300 transition-all rounded-lg border border-gray-200 hover:shadow-xl  hover:-translate-y-0.5">
-      <Link href={`/announcements/${announcement.id}`}>
+      <Link href={href || `/announcements/${announcement.id}`}>
         {/* Card Header */}
         <CardHeader className="px-6 pt-6 pb-0">
-          <h2 className="text-xl font-semibold line-clamp-1">
-            {announcement.title}
-          </h2>
+          <div className="flex flex-row">
+            <h2 className="text-xl font-semibold line-clamp-1">
+              {announcement.title}
+            </h2>
+            {/* {!announcement.published && } */}
+          </div>
           <p className="text-sm font-light line-clamp-1">
-            {getRelativeTime(announcement.date)}
+            {getRelativeTime(announcement.createdAt)}
           </p>
         </CardHeader>
 
         <CardContent className="flex flex-col gap-4 px-6 pt-4 pb-4">
-          <p className="text-gray-600 line-clamp-3">{announcement.content}</p>
+          <Markdown className="text-gray-600 line-clamp-3">
+            {announcement.content}
+          </Markdown>
           {announcement.imageURL && (
             <div className="h-64 w-full overflow-hidden rounded-lg">
               <img

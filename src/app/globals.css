@@ -93,6 +93,10 @@ main {
 .markdown-content {
   @apply prose lg:prose-xl;
 }
+
+.markdown-editor {
+  max-width: 100% !important;
+}
 /* .markdown-content {
   direction: auto; 
   unicode-bidi: plaintext; 

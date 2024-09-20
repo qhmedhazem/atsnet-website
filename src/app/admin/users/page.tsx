@@ -4,6 +4,6 @@ interface Props {
   children: ReactNode;
 }
 
-export default function UserPersonalSettings({ children }: Props) {
+export default function UsersAdministration({ children }: Props) {
   return <></>;
 }

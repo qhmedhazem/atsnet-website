@@ -1,11 +1,11 @@
 import React, { FC } from "react";
 import Modal from "@/components/Modal/Modal";
-import EventCard from "./EventCard";
 import EventsList from "./EventsList";
+import { Event } from "@prisma/client";
 
 interface Props {
   day: Date;
-  events: IEvent[];
+  events: Event[];
   isOpen: boolean;
   onClose: () => any;
 }

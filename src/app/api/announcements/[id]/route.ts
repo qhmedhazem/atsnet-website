@@ -28,23 +28,14 @@ export async function PUT(
   if (!annoncement)
     return Response.json({ message: "Annoncement not found" }, { status: 404 });
 
-  const userWithAnnoncements = await prisma.user.findUnique({
-    where: { id: session.user.id },
-    include: { annoncements: true },
-  });
-
-  if (!userWithAnnoncements?.annoncements.some((item) => item.id === id))
-    return Response.json({ message: "Missing Access" }, { status: 403 });
-
   try {
     const validatedData = annoncementSchema.parse(body);
 
     const updatedAnnoncement = await prisma.annoncement.update({
       where: { id },
       data: {
-        title: validatedData.title,
+        ...validatedData,
         updatedAt: new Date(),
-        content: validatedData.content,
       },
     });
 
@@ -70,7 +61,6 @@ export async function DELETE(
 ) {
   const { id } = params;
   const session: Session | null = await getServerSession(authOptions);
-  const body = await req.json();
 
   if (!session)
     return Response.json({ message: "Unauthorized" }, { status: 401 });
@@ -84,14 +74,6 @@ export async function DELETE(
 
   if (!annoncement)
     return Response.json({ message: "Annoncement not found" }, { status: 404 });
-
-  const userWithAnnoncements = await prisma.user.findUnique({
-    where: { id: session.user.id },
-    include: { annoncements: true },
-  });
-
-  if (!userWithAnnoncements?.annoncements.some((item) => item.id === id))
-    return Response.json({ message: "Missing Access" }, { status: 403 });
 
   try {
     const deletedAnnoncement = await prisma.annoncement.delete({

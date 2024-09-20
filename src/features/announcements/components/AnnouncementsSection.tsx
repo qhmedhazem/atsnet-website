@@ -1,38 +1,23 @@
-"use client";
-
 import { FC, HTMLAttributes } from "react";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
+import { Annoncement } from "@prisma/client";
 
-import { Button } from "@/components/ui/Button";
-import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/Form";
-import { Input } from "@/components/ui/Input";
-import { Textarea } from "@/components/ui/Textarea";
-import { ErrorMessage } from "@/components/ui/ErrorMessage";
-import { cn } from "@/lib/utils";
+import List from "@/components/List";
 import AnnouncementCard from "./Announcements/AnnouncementCard";
 
+import { cn } from "@/lib/utils";
+
 interface Props extends HTMLAttributes<HTMLDivElement> {
-  announcements: IAnnouncement[];
+  announcements: Annoncement[];
 }
 
 const AnnouncementsSection: FC<Props> = ({ announcements, ...props }) => {
   return (
     <section className={cn("w-full", props.className)}>
-      <ul className="w-full h-auto flex flex-col gap-4">
-        {announcements.map((announcement) => (
-          <AnnouncementCard key={announcement.id} announcement={announcement} />
+      <List>
+        {announcements.map((a) => (
+          <AnnouncementCard key={a.id} announcement={a} />
         ))}
-      </ul>
+      </List>
     </section>
   );
 };
