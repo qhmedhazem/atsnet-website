@@ -5,6 +5,7 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/Sheet";
 import { cn } from "@/lib/utils";
 import { MenuIcon, Settings, XIcon } from "lucide-react";
 import Link from "@/components/ui/Link";
+import Brand from "./Brand";
 
 // Sidebar items
 const userSettings = [
@@ -24,9 +25,9 @@ const SettingsLayout: FC<Props> = ({ ...props }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   return (
-    <div className="min-h-screen flex flex-col pt-24">
+    <div className="max-h-screen flex flex-col">
       {/* Mobile Menu */}
-      <div className="md:hidden bg-primary p-4">
+      <div className="md:hidden bg-primary max-h-screen">
         <Sheet open={isSidebarOpen} onOpenChange={setIsSidebarOpen}>
           <SheetTrigger asChild>
             <button className="text-white">
@@ -42,16 +43,22 @@ const SettingsLayout: FC<Props> = ({ ...props }) => {
       </div>
 
       {/* Sidebar for larger screens */}
-      <div className="flex flex-col md:flex-row">
+      <div className="max-h-screen flex flex-col md:flex-row ">
         <aside className="hidden md:block md:w-64 bg-primary text-white flex-shrink-0">
           <div className="p-6">
-            <h2 className="text-xl font-bold mb-4">Settings</h2>
+            <Brand withText={true} withDescription={false} />
             <SidebarContent />
           </div>
         </aside>
 
         {/* Main Content Area */}
-        <main className={cn(props.className, "flex-1 p-6 ")} {...props} />
+        <main
+          className={cn(
+            props.className,
+            "flex-1 p-6 overflow-y-scroll overflow-x-hidden"
+          )}
+          {...props}
+        />
       </div>
     </div>
   );

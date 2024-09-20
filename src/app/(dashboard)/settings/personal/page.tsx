@@ -10,11 +10,7 @@ import { User } from "@prisma/client";
 import { CRUDLayout } from "@/components/CRUDLayout";
 import UserActions from "@/features/auth/components/users/UserActions";
 
-interface Props {
-  children: ReactNode;
-}
-
-export default async function UserPersonalSettings({ children }: Props) {
+export default async function UserPersonalSettings() {
   const session: Session | null = await getServerSession(authOptions);
   if (!session) return null;
 
