@@ -34,6 +34,7 @@ export const useAuth = () => {
         return;
       }
 
+      router.refresh();
       setIsSuccess(true);
     } catch (error) {
       console.error("Sign in error:", error);

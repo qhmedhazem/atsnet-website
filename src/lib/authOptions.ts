@@ -53,8 +53,8 @@ export const authOptions: AuthOptions = {
     strategy: "jwt",
   },
   callbacks: {
-    redirect() {
-      return "/settings/personal";
+    async redirect({ url, baseUrl }) {
+      return url.startsWith(baseUrl) ? url : baseUrl;
     },
     async jwt({ token, user }) {
       if (user) {
