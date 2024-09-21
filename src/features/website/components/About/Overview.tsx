@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const Overview = () => {
   return (
-    <div className="w-full px-4 flex justify-center">
+    <div className="w-full px-4 flex justify-center py-8">
       <div className="max-w-3xl flex flex-col justify-center items-center gap-16">
         <div className="w-full flex flex-col gap-4">
           <h1 className="text-3xl font-bold">

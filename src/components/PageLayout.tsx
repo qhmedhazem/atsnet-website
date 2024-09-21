@@ -51,7 +51,8 @@ export const PageLayout: FC<Props> = ({
         </div>
         {headerChildren}
       </header>
-      <div className="py-8 px-4 md:px-12 w-full h-full flex justify-center">
+      {/* py-8 px-4 md:px-12 */}
+      <div className="w-full h-full flex justify-center">
         <main
           {...props}
           className={cn(
