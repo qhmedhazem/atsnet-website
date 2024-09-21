@@ -17,7 +17,7 @@ export const useContactForm = () => {
     mutationFn: async (data: contactSchema) => {
       const response = await fetch({
         method: "POST",
-        url: "/api/contact",
+        url: "/messages",
         data: data,
       });
       return response;
