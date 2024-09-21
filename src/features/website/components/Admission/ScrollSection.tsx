@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 const ScrollStepIndicator: React.FC = () => {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const [scrollHeight, setScrollHeight] = useState(0);
+  const [lastStepHeight, setLastStepHeight] = useState(0);
   const [activeSteps, setActiveSteps] = useState<number[]>([]);
   const sectionsRef = useRef<HTMLDivElement[]>([]);
 
@@ -34,21 +35,27 @@ const ScrollStepIndicator: React.FC = () => {
       const newActiveSteps: number[] = [];
 
       sectionsRef.current.forEach((section, index) => {
-        const sectionHeight = section.clientHeight;
-
-        if (scrollHeight >= index * (100 / steps.length)) {
+        if (newScrollHeight >= index * (100 / steps.length)) {
           newActiveSteps.push(index);
+          setLastStepHeight(index * (100 / steps.length));
+        } else {
+          setLastStepHeight(0);
         }
       });
 
-      setActiveSteps(newActiveSteps);
+      // Deactivate the first step when at the top of the page
+      if (scrollY === 0) {
+        setActiveSteps([]);
+      } else {
+        setActiveSteps(newActiveSteps);
+      }
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [scrollHeight]);
+  }, []);
 
   return (
     <div
@@ -59,7 +66,9 @@ const ScrollStepIndicator: React.FC = () => {
         className="absolute left-1/2 rounded-full bg-blue-500"
         style={{
           width: "8px",
-          height: `${scrollHeight}vh`, // Dynamic height based on scroll
+          height: `${
+            lastStepHeight === 0 ? Math.min(scrollHeight) : lastStepHeight + 1
+          }vh`, // Limit to last step height
           transform: "translateX(-50%)",
           transition: "height 0s", // No transition delay for height
         }}
@@ -70,7 +79,11 @@ const ScrollStepIndicator: React.FC = () => {
           ref={addToRefs}
           className="h-screen w-full flex justify-between relative"
         >
-          <img className="w-[350px] h-[200px]" src="/landing2.jpg"></img>
+          <img
+            className="w-[350px] h-[200px]"
+            src="/landing2.jpg"
+            alt={`Step ${step}`}
+          />
           <div
             className={`w-10 h-10 rounded-full flex items-center justify-center text-white font-bold text-xl transition-colors duration-300 ${
               activeSteps.includes(index) ? "bg-blue-500" : "bg-gray-500"
