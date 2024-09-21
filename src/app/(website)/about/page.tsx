@@ -1,5 +1,5 @@
 import { PageLayout } from "@/components/PageLayout";
-import Overview from "@/features/website/components/Overview";
+import Overview from "@/features/website/components/About/Overview";
 
 export default function About() {
   return (

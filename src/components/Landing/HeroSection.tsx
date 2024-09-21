@@ -6,7 +6,7 @@ const HeroSection = () => {
   return (
     <Carousel
       id="pageLayout"
-      className="w-screen h-screen"
+      className="w-screen h-screen max-h-screen z-0"
       prevArrow={() => null}
       nextArrow={() => null}
       autoplay={true}

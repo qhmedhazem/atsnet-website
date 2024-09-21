@@ -2,7 +2,7 @@ import { PageLayout } from "@/components/PageLayout";
 
 import ContactInfo from "@/features/contact/components/ContactInfo";
 import ContactForm from "@/features/contact/components/ContactForm";
-import ScrollLineEffect from "@/features/website/components/ScrollSection";
+import ScrollLineEffect from "@/features/website/components/Admission/ScrollSection";
 import Image from "next/image";
 
 export default function About() {
