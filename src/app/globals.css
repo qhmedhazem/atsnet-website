@@ -174,3 +174,7 @@ main {
 .markdown-content td {
   @apply bg-white;
 }
+
+html {
+  scroll-behavior: smooth;
+}
