@@ -1,21 +1,12 @@
 import { PageLayout } from "@/components/PageLayout";
-
-import ContactInfo from "@/features/contact/components/ContactInfo";
-import ContactForm from "@/features/contact/components/ContactForm";
-import ScrollLineEffect from "@/features/website/components/Admission/ScrollSection";
-import Image from "next/image";
+import AdmissionInfo from "@/features/website/components/Admission/AdmissionInfo";
+import AdmissionStagesContainer from "@/features/website/components/Admission/AdmissionStagesContainer";
 
 export default function About() {
   return (
-    <PageLayout
-      imageSrc="/landing2.jpg"
-      imageAlt="test"
-      title="Contact Us"
-      description="Contact with school staff."
-    >
-      <h1 className="text-3xl">Addmission</h1>
-
-      <ScrollLineEffect />
+    <PageLayout imageSrc="/landing2.jpg" imageAlt="test" title="Admission">
+      <AdmissionInfo />
+      <AdmissionStagesContainer />
     </PageLayout>
   );
 }
