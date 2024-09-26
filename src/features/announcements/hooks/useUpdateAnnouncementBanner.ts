@@ -19,9 +19,8 @@ export const useUpdateAnnouncementBanner = (
   const [serverError, setServerError] = useState("");
 
   const mutation = useMutation({
-    mutationFn: async (data: annoncementBannerSchema) => {
-      console.log(data)
-      const response = await fetch<Annoncement, annoncementBannerSchema>({
+    mutationFn: async (data: FormData) => {
+      const response = await fetch<Annoncement, FormData>({
         method: "PUT",
         url: `/announcements/${announcement.id}/banner`,
         data: data,
