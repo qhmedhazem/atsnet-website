@@ -1,5 +1,3 @@
-// app/api/upload/route.ts
-
 import { NextResponse } from "next/server";
 import { getServerSession, Session } from "next-auth";
 import { ObjectId } from "mongodb";
@@ -27,7 +25,6 @@ const storage = multer.diskStorage({
   },
 });
 
-// Multer instance
 const upload = multer({ storage });
 
 const runMiddleware = (req: NextApiRequest, res: any, fn: Function) => {
