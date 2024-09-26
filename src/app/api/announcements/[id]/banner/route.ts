@@ -1,10 +1,17 @@
 import { NextResponse } from "next/server";
 import { getServerSession, Session } from "next-auth";
-import {authOptions} from "@/lib/authOptions";
+import { PrismaClient } from "@prisma/client";
+import { authOptions } from "@/lib/authOptions";
 import { db } from "@/lib/db";
 import { storageMiddleware, upload } from "@/lib/middlewares/storage";
 
-export async function POST(req: Request) {
+const prisma = new PrismaClient();
+
+export async function PUT(
+  req: Request,
+  { params }: { params: { id: string } }
+) {
+  const { id } = params;
   const session: Session | null = await getServerSession(authOptions);
 
   if (!session) {
@@ -25,12 +32,22 @@ export async function POST(req: Request) {
       },
     });
 
+    const updatedAnnoncement = await prisma.annoncement.update({
+      where: { id },
+      data: {
+        imageURL: `/api/cdn/${fileId}${fileExt}`,
+        updatedAt: new Date(),
+      },
+    });
+
     return NextResponse.json({
-      message: "File uploaded successfully!",
+      message: "Banner uploaded successfully!",
       filePath: `/api/cdn/${fileId}${fileExt}`,
       attachment,
+      announcment: updatedAnnoncement,
     });
   } catch (error) {
+    console.log(error);
     return NextResponse.json(
       { error: "Failed to upload file or save data." },
       { status: 500 }
