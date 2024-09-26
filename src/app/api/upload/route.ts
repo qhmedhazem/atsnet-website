@@ -1,42 +1,8 @@
 import { NextResponse } from "next/server";
 import { getServerSession, Session } from "next-auth";
-import { ObjectId } from "mongodb";
-import multer from "multer";
-import path from "path";
-import fs from "fs";
-import type { NextApiRequest } from "next";
 import authOptions from "@/lib/authOptions";
 import { db } from "@/lib/db";
-
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    const uploadDir = path.join(process.cwd(), "uploads");
-    if (!fs.existsSync(uploadDir)) {
-      fs.mkdirSync(uploadDir);
-    }
-    cb(null, uploadDir);
-  },
-  filename: function (req, file, cb) {
-    const objectId = new ObjectId();
-    const ext = path.extname(file.originalname);
-    cb(null, `${objectId}${ext}`);
-    (req as any).fileId = objectId.toString();
-    (req as any).fileExt = ext;
-  },
-});
-
-const upload = multer({ storage });
-
-const runMiddleware = (req: NextApiRequest, res: any, fn: Function) => {
-  return new Promise((resolve, reject) => {
-    fn(req, res, (result: any) => {
-      if (result instanceof Error) {
-        return reject(result);
-      }
-      resolve(result);
-    });
-  });
-};
+import { storageMiddleware, upload } from "@/lib/middlewares/storage";
 
 export async function POST(req: Request) {
   const session: Session | null = await getServerSession(authOptions);
@@ -48,7 +14,7 @@ export async function POST(req: Request) {
   const res = new NextResponse();
 
   try {
-    await runMiddleware(req as any, res as any, upload.single("file"));
+    await storageMiddleware(req as any, res as any, upload.single("file"));
 
     const { fileId, fileExt } = req as any;
     const attachment = await db.attachment.create({
@@ -61,7 +27,7 @@ export async function POST(req: Request) {
 
     return NextResponse.json({
       message: "File uploaded successfully!",
-      filePath: `/uploads/${fileId}${fileExt}`,
+      filePath: `/api/cdn/${fileId}${fileExt}`,
       attachment,
     });
   } catch (error) {
