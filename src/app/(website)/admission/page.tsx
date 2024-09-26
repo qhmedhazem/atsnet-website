@@ -4,7 +4,7 @@ import AdmissionStagesContainer from "@/features/website/components/Admission/Ad
 
 export default function About() {
   return (
-    <PageLayout imageSrc="/landing2.jpg" imageAlt="test" title="Admission">
+    <PageLayout imageSrc="/landing1.jpg" imageAlt="test" title="Admission">
       <AdmissionInfo />
       <AdmissionStagesContainer />
     </PageLayout>

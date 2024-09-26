@@ -23,7 +23,7 @@ const AdmissionInfo: FC<Props> = ({ className, children, ...props }) => {
             className="text-light-blue-500 underline"
             href="https://dualedu.moe.gov.eg/loginWithMsSucess"
           >
-            Dual Education official application portal
+            Dual Education Official Application Portal
           </Link>
           .
         </div>

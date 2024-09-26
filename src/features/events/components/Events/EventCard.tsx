@@ -6,6 +6,7 @@ import { getRelativeTime } from "@/lib/utils";
 import { LinkButton } from "@/components/ui/Button";
 import Link from "next/link";
 import Markdown from "react-markdown";
+import { Badge } from "@/components/ui/Badge";
 
 interface Props {
   event: Event;
@@ -22,6 +23,7 @@ const EventCardContent: React.FC<Props> = ({ event, href }) => {
               {event.title}
             </h2>
             <p className="text-sm font-light">{getRelativeTime(event.date)}</p>
+            {!event.published && <Badge>Unpublished</Badge>}
           </div>
           {event.registerLink && !href && (
             <LinkButton href={event.registerLink} target="_blank">
@@ -42,7 +44,7 @@ const EventCardContent: React.FC<Props> = ({ event, href }) => {
 
 const EventCard: React.FC<Props> = ({ event, href }) => {
   return (
-    <Card className="w-full mx-auto duration-300 transition-all rounded-lg border border-gray-200">
+    <Card className="w-full cursor-pointer mx-auto duration-300 transition-all rounded-lg border border-gray-200 hover:shadow-xl  hover:-translate-y-0.5">
       {/* Card Header */}
       {href ? (
         <Link href={`/admin/events/${event.id}`}>
