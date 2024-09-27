@@ -34,11 +34,11 @@ const AnnouncementCard: React.FC<Props> = ({ announcement, href }) => {
             {announcement.content}
           </Markdown>
           {announcement.imageURL && (
-            <div className="h-64 w-full overflow-hidden rounded-lg">
+            <div className="w-full h-64 relative overflow-hidden rounded-xl bg-accent">
               <img
-                src={announcement.imageURL}
-                alt={announcement.title}
-                className="object-center w-auto h-auto"
+                src={announcement.imageURL || undefined}
+                alt="Banner Image"
+                className="h-full w-full object-contain"
               />
             </div>
           )}

@@ -17,8 +17,11 @@ import {
   type MDXEditorProps,
   CodeToggle,
   CodeBlockNode,
+  InsertImage,
+  imagePlugin,
 } from "@mdxeditor/editor";
 import "@mdxeditor/editor/style.css";
+import { imageUploadHandler } from "@/lib/utils";
 
 interface Props extends MDXEditorProps {
   children?: ReactNode;
@@ -32,6 +35,13 @@ const MarkdownEditor = forwardRef<MDXEditorMethods, Props>((props, ref) => {
         ref={ref}
         className="markdown-editor markdown-content border border-gray-300 rounded-md p-4 !w-full !h-full overflow-y-auto" // Enable scroll for editor
         plugins={[
+          imagePlugin({
+            imageUploadHandler: imageUploadHandler,
+            imageAutocompleteSuggestions: [
+              "https://picsum.photos/200/300",
+              "https://picsum.photos/200",
+            ],
+          }),
           toolbarPlugin({
             toolbarContents: () => (
               <div className="w-full flex justify-between items-center">
@@ -40,6 +50,7 @@ const MarkdownEditor = forwardRef<MDXEditorMethods, Props>((props, ref) => {
                   <BoldItalicUnderlineToggles />
                   <CreateLink />
                   <BlockTypeSelect />
+                  <InsertImage />
                 </div>
                 {props.children}
               </div>

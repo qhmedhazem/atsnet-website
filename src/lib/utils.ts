@@ -6,6 +6,7 @@ dayjs.extend(relativeTime);
 
 import { twMerge } from "tailwind-merge";
 import { type ClassValue, clsx } from "clsx";
+import { Attachment } from "@prisma/client";
 
 export const monthsNames = [
   "January",
@@ -57,6 +58,17 @@ export const resizeAvatar = (file: File): Promise<string> =>
       "base64"
     );
   });
+
+export async function imageUploadHandler(file: File) {
+  const formData = new FormData();
+  formData.append("file", file);
+  const response = await fetch("/api/upload", {
+    method: "POST",
+    body: formData,
+  });
+  const json = (await response.json()) as Attachment;
+  return "/api/cdn/" + json.id + json.extension;
+}
 
 export function getDayStartEndDates(givenDate: Date) {
   const startOfDay = new Date(givenDate);
