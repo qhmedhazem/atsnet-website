@@ -1,7 +1,7 @@
 import { FC, HTMLAttributes } from "react";
 import { Annoncement } from "@prisma/client";
 
-import List from "@/components/List";
+import VerticalList from "@/components/VerticalList";
 import AnnouncementCard from "./Announcements/AnnouncementCard";
 
 import { cn } from "@/lib/utils";
@@ -13,11 +13,11 @@ interface Props extends HTMLAttributes<HTMLDivElement> {
 const AnnouncementsSection: FC<Props> = ({ announcements, ...props }) => {
   return (
     <section className={cn("w-full", props.className)}>
-      <List>
+      <VerticalList>
         {announcements.map((a) => (
           <AnnouncementCard key={a.id} announcement={a} />
         ))}
-      </List>
+      </VerticalList>
     </section>
   );
 };

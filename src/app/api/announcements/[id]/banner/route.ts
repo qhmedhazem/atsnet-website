@@ -1,14 +1,11 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { getServerSession, Session } from "next-auth";
-import { PrismaClient } from "@prisma/client";
 import { authOptions } from "@/lib/authOptions";
 import { db } from "@/lib/db";
-import { storageMiddleware, upload } from "@/lib/middlewares/storage";
-
-const prisma = new PrismaClient();
+import { storageMiddleware } from "@/lib/middlewares/storage";
 
 export async function PUT(
-  req: Request,
+  req: NextRequest,
   { params }: { params: { id: string } }
 ) {
   const { id } = params;
@@ -18,34 +15,28 @@ export async function PUT(
     return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
   }
 
-  const res = new NextResponse();
-
   try {
-    await storageMiddleware(req as any, res as any, upload.single("file"));
+    const attachment = await storageMiddleware(req, session.user);
+    if (!attachment) {
+      return NextResponse.json(
+        {
+          message: "Failed to upload file or save data.",
+        },
+        {
+          status: 400,
+        }
+      );
+    }
 
-    const { fileId, fileExt } = req as any;
-    const attachment = await db.attachment.create({
-      data: {
-        id: fileId,
-        userId: session.user.id,
-        extension: fileExt,
-      },
-    });
-
-    const updatedAnnoncement = await prisma.annoncement.update({
+    const updatedAnnoncement = await db.annoncement.update({
       where: { id },
       data: {
-        imageURL: `/api/cdn/${fileId}${fileExt}`,
+        imageURL: `/api/cdn/${attachment.id}${attachment.extension}`,
         updatedAt: new Date(),
       },
     });
 
-    return NextResponse.json({
-      message: "Banner uploaded successfully!",
-      filePath: `/api/cdn/${fileId}${fileExt}`,
-      attachment,
-      announcment: updatedAnnoncement,
-    });
+    return NextResponse.json(updatedAnnoncement);
   } catch (error) {
     console.log(error);
     return NextResponse.json(

@@ -1,5 +1,4 @@
 import React, { FC, HTMLAttributes, ReactNode } from "react";
-import { Annoncement } from "@prisma/client";
 import NoData from "@/components/NoData";
 import { cn } from "@/lib/utils";
 
@@ -16,12 +15,21 @@ const List: FC<Props> = ({
   ...props
 }) => {
   return (
-    <div className={cn("w-full", props.className)}>
+    <div className="w-full">
       {title && <h2 className="text-3xl">{title}</h2>}
-      <div className="gap-4 lg:gap-2 xl:gap-4 flex flex-col-reverse w-full lg:flex-row lg:justify-center">
-        {children.length == 0 && <NoData title={emptyMessage} />}
-        {children.length != 0 && (
-          <ul className="w-full h-auto flex flex-col gap-4">{children}</ul>
+      <div className="flex flex-wrap justify-center gap-4">
+        {children.length === 0 && <NoData title={emptyMessage} />}
+        {children.length > 0 && (
+          <div
+            {...props}
+            className={cn("flex flex-wrap gap-4 w-full", props.className)}
+          >
+            {children.map((child, index) => (
+              <div key={index} className="flex-1 m-2 flex-grow">
+                {child}
+              </div>
+            ))}
+          </div>
         )}
       </div>
     </div>

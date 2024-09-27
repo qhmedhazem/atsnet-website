@@ -24,6 +24,9 @@ export const useUpdateAnnouncementBanner = (
         method: "PUT",
         url: `/announcements/${announcement.id}/banner`,
         data: data,
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
       });
       return response;
     },

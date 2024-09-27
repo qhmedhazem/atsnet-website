@@ -6,10 +6,7 @@ interface Props extends HTMLAttributes<HTMLDivElement> {}
 
 const AdmissionInfo: FC<Props> = ({ className, children, ...props }) => {
   return (
-    <section
-      className={cn("container w-full flex flex-col gap-8", className)}
-      {...props}
-    >
+    <section className={cn("w-full flex flex-col gap-8", className)} {...props}>
       <div className="space-y-2">
         <h2 className="text-4xl font-bold lg:mt-8">Admission Process</h2>
         <div className="space-y-2">

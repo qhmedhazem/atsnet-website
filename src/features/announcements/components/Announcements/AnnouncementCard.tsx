@@ -30,7 +30,7 @@ const AnnouncementCard: React.FC<Props> = ({ announcement, href }) => {
         </CardHeader>
 
         <CardContent className="flex flex-col gap-4 px-6 pt-4 pb-4">
-          <Markdown className="text-gray-600 line-clamp-3">
+          <Markdown className="text-gray-600 line-clamp-2 h-12">
             {announcement.content}
           </Markdown>
           {announcement.imageURL && (

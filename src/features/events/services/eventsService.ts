@@ -12,7 +12,7 @@ export const fetchEventById = async (id: string) => {
   });
 };
 
-export const previewEvents = async () => {
+export const previewEvents = async (limit?: number) => {
   return db.event.findMany({
     where: {
       published: true,
@@ -20,6 +20,7 @@ export const previewEvents = async () => {
     orderBy: {
       createdAt: "desc",
     },
+    take: limit,
   });
 };
 

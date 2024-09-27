@@ -17,18 +17,24 @@ export const useAnnouncementBanner = (announcement: Annoncement) => {
 
   const onSubmit = (data: z.infer<typeof annoncementBannerSchema>) => {
     const formData = new FormData();
-  
+
     if (data.file) {
       formData.append("file", data.file);
     }
-  
+
     update(formData);
   };
   const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
     const selectedFile = e.target.files?.[0];
     if (selectedFile) {
       setFilePreview(URL.createObjectURL(selectedFile));
+    } else {
+      setFilePreview(null);
     }
+  };
+
+  const resetFile = () => {
+    setFilePreview(null);
   };
 
   return {
@@ -37,6 +43,7 @@ export const useAnnouncementBanner = (announcement: Annoncement) => {
     isSuccess,
     handleSubmit: form.handleSubmit(onSubmit),
     handleFileChange,
+    resetFile,
     file: filePreview,
     serverError,
   };

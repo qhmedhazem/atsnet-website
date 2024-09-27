@@ -1,38 +1,33 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { getServerSession, Session } from "next-auth";
-import {authOptions} from "@/lib/authOptions";
+import { authOptions } from "@/lib/authOptions";
 import { db } from "@/lib/db";
-import { storageMiddleware, upload } from "@/lib/middlewares/storage";
+import { storageMiddleware } from "@/lib/middlewares/storage";
 
-export async function POST(req: Request) {
+export async function POST(req: NextRequest) {
   const session: Session | null = await getServerSession(authOptions);
 
   if (!session) {
     return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
   }
 
-  const res = new NextResponse();
-
   try {
-    await storageMiddleware(req as any, res as any, upload.single("file"));
+    const attachment = await storageMiddleware(req, session.user);
+    if (!attachment) {
+      return NextResponse.json(
+        {
+          message: "Failed to upload file or save data.",
+        },
+        {
+          status: 400,
+        }
+      );
+    }
 
-    const { fileId, fileExt } = req as any;
-    const attachment = await db.attachment.create({
-      data: {
-        id: fileId,
-        userId: session.user.id,
-        extension: fileExt,
-      },
-    });
-
-    return NextResponse.json({
-      message: "File uploaded successfully!",
-      filePath: `/api/cdn/${fileId}${fileExt}`,
-      attachment,
-    });
+    return NextResponse.json(attachment);
   } catch (error) {
     return NextResponse.json(
-      { error: "Failed to upload file or save data." },
+      { message: "Failed to upload file or save data." },
       { status: 500 }
     );
   }
