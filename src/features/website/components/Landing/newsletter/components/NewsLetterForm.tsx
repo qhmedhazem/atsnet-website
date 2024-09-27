@@ -24,35 +24,33 @@ const NewsLetterForm = () => {
 
   return (
     <Form {...form}>
-      <form
-        onSubmit={handleSubmit}
-        className="space-y-4 w-[80%] flex justify-center flex-col xl:w-[50%]"
-      >
-        <FormField
-          control={form.control}
-          name="email"
-          render={({ field }) => (
-            <FormItem>
-              <FormControl>
-                <Input
-                  className="text-black"
-                  placeholder="Enter your email address"
-                  {...field}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <Button
-          isLoading={mutation.isPending}
-          disabled={mutation.isSuccess || mutation.isError}
-          type="submit"
-          size="lg"
-        >
-          Subscribe
-        </Button>
-        {serverError && <ErrorMessage children={serverError} />}
+      <form onSubmit={handleSubmit} className="space-y-4 w-full lg:w-[50%]">
+        <div className="flex justify-between items-center">
+          <FormField
+            control={form.control}
+            name="email"
+            render={({ field }) => (
+              <FormItem className="w-full">
+                <FormControl>
+                  <Input
+                    className="text-black rounded-r-none"
+                    placeholder="Enter your email address"
+                    {...field}
+                  />
+                </FormControl>
+              </FormItem>
+            )}
+          />
+          <Button
+            isLoading={mutation.isPending}
+            disabled={mutation.isSuccess || mutation.isError}
+            type="submit"
+            size="lg"
+            className="rounded-l-none"
+          >
+            Subscribe
+          </Button>
+        </div>
       </form>
     </Form>
   );
