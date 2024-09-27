@@ -48,7 +48,11 @@ const AnnouncementBannerForm: FC<Props> = ({ announcement }) => {
                   type="file"
                   onChange={(e) => {
                     const selectedFile = e.target.files?.[0];
-                    if (selectedFile) {
+                    if (
+                      selectedFile &&
+                      (selectedFile.type === "image/jpeg" ||
+                        selectedFile.type === "image/png")
+                    ) {
                       field.onChange(selectedFile);
                       handleFileChange(e);
                     }
@@ -64,7 +68,7 @@ const AnnouncementBannerForm: FC<Props> = ({ announcement }) => {
         )}
         {file && <img src={file} alt="Banner Image" />}
         <Button isLoading={isPending} type="submit" size="lg">
-          Confirm
+          Upload
         </Button>
         {serverError && <ErrorMessage children={serverError} />}
       </form>

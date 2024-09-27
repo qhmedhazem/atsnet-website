@@ -4,7 +4,7 @@ import { CRUDLayout } from "@/components/CRUDLayout";
 import AnnouncementActions from "@/features/announcements/components/Editor/AnnouncementActions";
 import AnnouncementEditor from "@/features/announcements/components/Editor/AnnouncemetEditor";
 import AnnouncementInfo from "@/features/announcements/components/Editor/AnnouncementInfo";
-import AnnouncementBannerForm from "@/features/announcements/components/Editor/AnnouncementBannerForm";
+import AnnouncementBanner from "@/features/announcements/components/Editor/AnnouncementBanner";
 
 export default async function AnnouncementManagementPage({
   params: { id },
@@ -20,7 +20,7 @@ export default async function AnnouncementManagementPage({
       actions={<AnnouncementActions announcement={announcement} />}
     >
       <AnnouncementInfo announcement={announcement} />
-      <AnnouncementBannerForm announcement={announcement} />
+      <AnnouncementBanner announcement={announcement} />
       <AnnouncementEditor announcement={announcement} />
     </CRUDLayout>
   );

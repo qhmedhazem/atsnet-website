@@ -17,11 +17,11 @@ export const useAnnouncementBanner = (announcement: Annoncement) => {
 
   const onSubmit = (data: z.infer<typeof annoncementBannerSchema>) => {
     const formData = new FormData();
-  
+
     if (data.file) {
       formData.append("file", data.file);
     }
-  
+
     update(formData);
   };
   const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
