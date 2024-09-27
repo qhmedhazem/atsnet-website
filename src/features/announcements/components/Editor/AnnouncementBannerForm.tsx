@@ -70,7 +70,7 @@ const AnnouncementBannerForm: FC<Props> = ({ announcement }) => {
                 >
                   {file || announcement.imageURL ? (
                     <img
-                      src={announcement.imageURL || file || undefined}
+                      src={file || announcement.imageURL || undefined}
                       alt="Banner Image"
                       className="h-full object-center"
                     />
