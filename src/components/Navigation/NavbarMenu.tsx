@@ -24,11 +24,11 @@ interface Props {
 }
 
 export function NavbarMenu({ isScrolled }: Props) {
-  const isDesktop = useMediaQuery("(min-width: 1024px)");
+  const isMobile = useMediaQuery("(max-width: 1024px)");
 
-  return isDesktop ? (
-    <DesktopNavbar isScrolled={isScrolled} />
-  ) : (
+  return isMobile ? (
     <MobileNavMenu isScrolled={isScrolled} />
+  ) : (
+    <DesktopNavbar isScrolled={isScrolled} />
   );
 }

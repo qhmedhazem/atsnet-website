@@ -17,7 +17,7 @@ const FooterLinksList: FC<Props> = ({ title, links }) => {
       <h6 className="text-xl">{title}</h6>
       <ul className="flex flex-col gap-2">
         {links.map((link) => (
-          <li key={link.href} className="text-md text-gray-900">
+          <li key={link.href} className="text-md text-gray-600">
             <Link href={link.href}>{link.title}</Link>
           </li>
         ))}

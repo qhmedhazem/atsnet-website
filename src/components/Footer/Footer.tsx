@@ -33,7 +33,7 @@ const Footer = () => {
           <div className="flex flex-col gap-8 md:gap-0 md:flex-row justify-between py-8">
             <div className="max-w-lg flex flex-col items-start gap-2">
               <Brand />
-              <p className="text-primary/50">
+              <p className="text-primary/50 text-md pt-5">
                 El-Dabaa Nuclear School is a premier institution dedicated to
                 educating and training the next generation of nuclear engineers
                 and scientists.
@@ -41,8 +41,24 @@ const Footer = () => {
             </div>
             <div className="flex flex-col md:flex-row gap-4 md:gap-12 lg:gap-24">
               <FooterLinksList
-                title="Social Media"
-                links={[{ title: "Instagram", href: "" }]}
+                title="Site Map"
+                links={[
+                  { title: "Home", href: "/" },
+                  { title: "About", href: "/about" },
+                  { title: "Campus", href: "/campus" },
+                  { title: "Academics", href: "/academics" },
+                  { title: "Contact", href: "/contact" },
+                ]}
+              />
+            </div>
+            <div className="flex flex-col md:flex-row gap-4 md:gap-12 lg:gap-24">
+              <FooterLinksList
+                title="Keep In Touch"
+                links={[
+                  { title: "Facebook", href: "" },
+                  { title: "Twitter", href: "" },
+                  { title: "+20 122 168 1400", href: "tel:+201221681400" },
+                ]}
               />
             </div>
           </div>

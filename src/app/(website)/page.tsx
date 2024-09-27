@@ -7,6 +7,7 @@ import { previewEvents } from "@/features/events/services/eventsService";
 import { Annoncement, Event } from "@prisma/client";
 import AdmissionSection from "@/features/website/components/Landing/AdmissionSection";
 import UpcomingEventsSection from "@/features/website/components/Landing/UpcomingEventsSection";
+import NewsLetterSection from "@/features/website/components/Landing/newsletter/components/NewsLetterSection";
 
 export default async function Home() {
   const [announcements, events]: [Annoncement[], Event[]] = await Promise.all([
@@ -25,6 +26,7 @@ export default async function Home() {
       <div className="container flex flex-col gap-20">
         <UpcomingEventsSection events={events} />
       </div>
+      <NewsLetterSection />
     </main>
   );
 }
