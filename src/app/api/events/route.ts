@@ -30,6 +30,7 @@ export async function POST(req: NextRequest) {
       data: {
         title: validatedData?.title || "Untitled",
         createdAt: new Date(),
+        location: validatedData?.location || "",
         date: validatedData?.date ? new Date(validatedData?.date) : new Date(),
         published: false,
         content: validatedData?.content || "",
