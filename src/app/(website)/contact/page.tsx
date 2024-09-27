@@ -12,7 +12,7 @@ export default function About() {
       description="Contact with school staff."
     >
       <h1 className="text-3xl">Let's Start Converstion.</h1>
-      <div className="mt-8 gap-8 flex flex-col w-full lg:grid lg:grid-cols-2">
+      <div className="gap-8 flex flex-col w-full lg:grid lg:grid-cols-2">
         <ContactInfo />
         <ContactForm />
       </div>

@@ -1,13 +1,12 @@
 import { FC, ReactNode, useRef } from "react";
 import Image from "next/image";
-import AlternatingSection from "./pre/AlteratingSection";
+import AlternatingSection from "@/components/AlteratingSection";
 
 const AcademicsDepartementsSection: FC = () => {
   return (
     <>
       <AlternatingSection
         title="Electrical Engineering"
-        content="The Electrical Engineering division focuses on the design, development, and application of electrical systems and components within the nuclear power industry."
         items={[
           "Electrical Circuits",
           "Power Systems",
@@ -25,10 +24,15 @@ const AcademicsDepartementsSection: FC = () => {
           />
         }
         reverse={false}
-      />
+      >
+        <p>
+          The Electrical Engineering division focuses on the design,
+          development, and application of electrical systems and components
+          within the nuclear power industry.
+        </p>
+      </AlternatingSection>
       <AlternatingSection
         title="Electronics Engineering"
-        content="The Electronics Engineering division focuses on development and application of electronic circuits and systems."
         items={[
           "Digital Electronics",
           "Analog Electronics",
@@ -46,10 +50,14 @@ const AcademicsDepartementsSection: FC = () => {
           />
         }
         reverse={true}
-      />
+      >
+        <p>
+          The Electronics Engineering division focuses on development and
+          application of electronic circuits and systems.
+        </p>
+      </AlternatingSection>
       <AlternatingSection
         title="Mechanical Engineering"
-        content="The Mechanical Engineering division focuses on the application of mechanical systems and components."
         items={[
           "Solid Mechanics",
           "Thermodynamics",
@@ -67,7 +75,10 @@ const AcademicsDepartementsSection: FC = () => {
           />
         }
         reverse={false}
-      />
+      >
+        The Mechanical Engineering division focuses on the application of
+        mechanical systems and components.
+      </AlternatingSection>
     </>
   );
 };

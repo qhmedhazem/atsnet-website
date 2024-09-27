@@ -52,6 +52,7 @@ model Event {
   content   String
   imageURL  String?
   registerLink  String
+  location  String
   date      DateTime
   author    User?    @relation("userEvents", fields: [authorId], references: [id])
   authorId  String   @db.ObjectId

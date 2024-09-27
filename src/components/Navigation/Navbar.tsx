@@ -1,24 +1,14 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { useScroll, useMotionValueEvent } from "framer-motion";
 import Brand from "../Brand";
 import { NavbarMenu } from "./NavbarMenu";
 import { cn } from "@/lib/utils";
 import useMediaQuery from "@/hooks/use-media-query";
+import useScroll from "@/hooks/use-scroll";
 
 const Navbar = () => {
   const isSmallMobile = useMediaQuery("(max-width: 450px)");
-  const [isScrolled, setIsScrolled] = useState(false);
-  const { scrollY } = useScroll();
-
-  useMotionValueEvent(scrollY, "change", (value) => {
-    if (value > 10 && !isScrolled) {
-      setIsScrolled(true);
-    } else if (value < 10 && isScrolled) {
-      setIsScrolled(false);
-    }
-  });
+  const isScrolled = useScroll();
 
   return (
     <div

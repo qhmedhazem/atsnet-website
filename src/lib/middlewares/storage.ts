@@ -1,39 +1,51 @@
-import { ObjectId } from "mongodb";
-import multer from "multer";
+import "server-only";
+
+import type { NextRequest } from "next/server";
 import path from "path";
-import fs from "fs";
-import type { NextApiRequest } from "next";
+import { ObjectId } from "mongodb";
+import fs from "fs/promises";
+import { Attachment, User } from "@prisma/client";
+import { db } from "../db";
 
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    const uploadDir = path.join(process.cwd(), "uploads");
-    if (!fs.existsSync(uploadDir)) {
-      fs.mkdirSync(uploadDir);
-    }
-    cb(null, uploadDir);
-  },
-  filename: function (req, file, cb) {
-    const objectId = new ObjectId();
-    const ext = path.extname(file.originalname);
-    cb(null, `${objectId}${ext}`);
-    (req as any).fileId = objectId.toString();
-    (req as any).fileExt = ext;
-  },
-});
+export const UPLOAD_DIR = path.resolve(process.env.ROOT_PATH ?? "", "uploads");
 
-export const upload = multer({ storage });
+export const storageMiddleware = async (
+  req: NextRequest,
+  user: Partial<User>
+): Promise<Attachment | null> => {
+  if (!user.id) return null;
 
-export const storageMiddleware = (
-  req: NextApiRequest,
-  res: any,
-  fn: Function
-) => {
-  return new Promise((resolve, reject) => {
-    fn(req, res, (result: any) => {
-      if (result instanceof Error) {
-        return reject(result);
+  const formData = await req.formData();
+  const body = Object.fromEntries(formData);
+  const file = (body.file as Blob) || null;
+
+  if (file) {
+    const id = new ObjectId();
+    const name = id.toString();
+    const ext = path.extname((file as File).name);
+    const filename = name + ext;
+
+    const buffer = Buffer.from(await file.arrayBuffer());
+    try {
+      try {
+        await fs.access(UPLOAD_DIR);
+      } catch {
+        await fs.mkdir(UPLOAD_DIR);
       }
-      resolve(result);
-    });
-  });
+      await fs.writeFile(path.resolve(UPLOAD_DIR, filename), buffer);
+
+      return db.attachment.create({
+        data: {
+          id: name,
+          userId: user.id,
+          extension: ext,
+        },
+      });
+    } catch (e) {
+      console.log(e);
+      return null;
+    }
+  }
+
+  return null;
 };

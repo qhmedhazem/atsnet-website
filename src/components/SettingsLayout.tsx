@@ -27,7 +27,7 @@ const SettingsLayout: FC<Props> = ({ ...props }) => {
   return (
     <div className="max-h-screen flex flex-col">
       {/* Mobile Menu */}
-      <div className="md:hidden bg-primary max-h-screen">
+      <div className="md:hidden bg-primary max-h-screen px-6 py-2">
         <Sheet open={isSidebarOpen} onOpenChange={setIsSidebarOpen}>
           <SheetTrigger asChild>
             <button className="text-white">
@@ -37,7 +37,7 @@ const SettingsLayout: FC<Props> = ({ ...props }) => {
 
           <SheetContent side="left" className="p-4 bg-primary text-white">
             {/* Sidebar content */}
-            <SidebarContent />
+            <SidebarContent onClose={() => setIsSidebarOpen(false)} />
           </SheetContent>
         </Sheet>
       </div>
@@ -47,7 +47,7 @@ const SettingsLayout: FC<Props> = ({ ...props }) => {
         <aside className="hidden md:block md:w-64 bg-primary text-white flex-shrink-0">
           <div className="p-6">
             <Brand withText={true} withDescription={false} />
-            <SidebarContent />
+            <SidebarContent onClose={() => setIsSidebarOpen(false)} />
           </div>
         </aside>
 
@@ -64,8 +64,12 @@ const SettingsLayout: FC<Props> = ({ ...props }) => {
   );
 };
 
+interface SidebarContentProps {
+  onClose: () => void;
+}
+
 // Sidebar content extracted into a separate component for reuse
-export const SidebarContent = () => (
+export const SidebarContent: FC<SidebarContentProps> = ({ onClose }) => (
   <div className="w-full mt-8 flex flex-col gap-8">
     {/* User Section */}
     <div>
@@ -77,6 +81,7 @@ export const SidebarContent = () => (
               href={item.href}
               className="block p-2 hover:bg-muted-foreground rounded-md"
               activeClass="bg-muted-foreground"
+              onClick={onClose}
             >
               {item.label}
             </Link>

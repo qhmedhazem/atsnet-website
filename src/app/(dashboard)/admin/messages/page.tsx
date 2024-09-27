@@ -1,5 +1,5 @@
 import { CRUDLayout } from "@/components/CRUDLayout";
-import List from "@/components/List";
+import VerticalList from "@/components/VerticalList";
 import MessageCard from "@/features/contact/components/Messages/MessageCard";
 import { fetchAllMessages } from "@/features/contact/services/messagesService";
 import React, { ReactNode } from "react";
@@ -13,11 +13,11 @@ export default async function MessagesAdministration({ children }: Props) {
 
   return (
     <CRUDLayout title="Messages">
-      <List emptyMessage="There are no messages for now.">
+      <VerticalList emptyMessage="There are no messages for now.">
         {messages.map((a) => (
           <MessageCard key={a.id} message={a} />
         ))}
-      </List>
+      </VerticalList>
     </CRUDLayout>
   );
 }

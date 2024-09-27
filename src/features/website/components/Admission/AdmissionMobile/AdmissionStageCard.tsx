@@ -41,7 +41,7 @@ const AdmissionStageCard: FC<AdmissionStageProps> = ({
     <div
       {...props}
       className={cn(
-        "w-full flex flex-col items-center justify-between gap-8 container",
+        "w-full flex flex-col items-center justify-between gap-8",
         className
       )}
     >

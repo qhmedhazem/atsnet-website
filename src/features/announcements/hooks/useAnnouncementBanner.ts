@@ -28,7 +28,13 @@ export const useAnnouncementBanner = (announcement: Annoncement) => {
     const selectedFile = e.target.files?.[0];
     if (selectedFile) {
       setFilePreview(URL.createObjectURL(selectedFile));
+    } else {
+      setFilePreview(null);
     }
+  };
+
+  const resetFile = () => {
+    setFilePreview(null);
   };
 
   return {
@@ -37,6 +43,7 @@ export const useAnnouncementBanner = (announcement: Annoncement) => {
     isSuccess,
     handleSubmit: form.handleSubmit(onSubmit),
     handleFileChange,
+    resetFile,
     file: filePreview,
     serverError,
   };
