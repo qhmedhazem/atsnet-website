@@ -1,12 +1,11 @@
 "use client";
 
-import { FC, useEffect } from "react";
+import { FC } from "react";
 import { Event } from "@prisma/client";
 import { Button } from "@/components/ui/Button";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -15,7 +14,7 @@ import {
 import { Input } from "@/components/ui/Input";
 import { ErrorMessage } from "@/components/ui/ErrorMessage";
 import { useEventInfo } from "../../hooks/useEventInfo";
-import DatePicker from "@/components/DatePicker";
+import DateAndTimePicker from "@/components/DateAndTimePicker"; // Updated import
 
 interface Props {
   event: Event;
@@ -55,12 +54,25 @@ const EventInfoForm: FC<Props> = ({ event }) => {
         />
         <FormField
           control={form.control}
+          name="location"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Location</FormLabel>
+              <FormControl>
+                <Input {...field} className="w-92" />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
           name="date"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Date</FormLabel>
+              <FormLabel>Date and Time</FormLabel>
               <FormControl>
-                <DatePicker {...field} children={undefined} />
+                <DateAndTimePicker {...field} onChange={field.onChange} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -69,7 +81,7 @@ const EventInfoForm: FC<Props> = ({ event }) => {
         <Button isLoading={isPending} type="submit" size="lg">
           Confirm
         </Button>
-        {serverError && <ErrorMessage children={serverError} />}
+        {serverError && <ErrorMessage>{serverError}</ErrorMessage>}
       </form>
     </Form>
   );

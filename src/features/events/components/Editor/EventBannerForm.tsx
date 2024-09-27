@@ -8,7 +8,6 @@ import {
   useRef,
   useState,
 } from "react";
-import { Annoncement } from "@prisma/client";
 import { Button } from "@/components/ui/Button";
 import {
   Form,
@@ -21,15 +20,14 @@ import {
 } from "@/components/ui/Form";
 import { Input } from "@/components/ui/Input";
 import { ErrorMessage } from "@/components/ui/ErrorMessage";
-import { useUsernameChange } from "@/features/auth/hooks/useUsernameChange";
-import { useAnnouncementBanner } from "../../hooks/useAnnouncementBanner";
-import Image from "next/image";
+import { useEventBanner } from "../../hooks/useEventBanner";
+import { Event } from "@prisma/client";
 
 interface Props {
-  announcement: Annoncement;
+  event: Event;
 }
 
-const AnnouncementBannerForm: FC<Props> = ({ announcement }) => {
+const EventBannerForm: FC<Props> = ({ event }) => {
   const {
     handleSubmit,
     serverError,
@@ -39,7 +37,7 @@ const AnnouncementBannerForm: FC<Props> = ({ announcement }) => {
     handleFileChange,
     resetFile,
     file,
-  } = useAnnouncementBanner(announcement);
+  } = useEventBanner(event);
 
   const ipRef = useRef<HTMLInputElement | null>(null);
 
@@ -70,9 +68,9 @@ const AnnouncementBannerForm: FC<Props> = ({ announcement }) => {
                   className="relative overflow-hidden rounded-xl bg-white h-64 max-w-lg flex justify-center items-center group"
                   onClick={openFile}
                 >
-                  {file || announcement.imageURL ? (
+                  {file || event.imageURL ? (
                     <img
-                      src={file || announcement.imageURL || undefined}
+                      src={file || event.imageURL || undefined}
                       alt="Banner Image"
                       className="h-full object-center"
                     />
@@ -125,28 +123,4 @@ const AnnouncementBannerForm: FC<Props> = ({ announcement }) => {
   );
 };
 
-export default AnnouncementBannerForm;
-
-/* <FormField
-control={form.control}
-name="file"
-render={({ field }) => (
-  <FormItem>
-    <FormLabel>Banner</FormLabel>
-    <FormControl>
-      <Input
-        className="w-92"
-        type="file"
-        onChange={(e) => {
-          const selectedFile = e.target.files?.[0];
-          if (selectedFile) {
-            field.onChange(selectedFile);
-            handleFileChange(e);
-          }
-        }}
-      />
-    </FormControl>
-    <FormMessage />
-  </FormItem>
-)}
-/> */
+export default EventBannerForm;
