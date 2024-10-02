@@ -6,14 +6,17 @@ const AcademicsDepartementsSection: FC = () => {
   return (
     <>
       <AlternatingSection
-        title="Electrical Engineering"
-        content="The Electrical Engineering division focuses on the design, development, and application of electrical systems and components within the nuclear power industry."
+        title="Electronics Engineering"
+        content="The Electronics Engineering division focuses on development and application of electronic circuits and systems."
         items={[
-          "Electrical Circuits",
-          "Power Systems",
+          "Digital Electronics",
+          "Radiation Detectors",
+          "Electronic Measuring Instruments",
+          "Nuclear Devices Electronics",
+          "Computer networks",
           "Control Systems",
-          "Instrumentation and Measurement",
-          "Electrical Machines",
+          "Electriconic Maintenance",
+          "Logic Circuits",
         ]}
         image={
           <Image
@@ -27,14 +30,16 @@ const AcademicsDepartementsSection: FC = () => {
         reverse={false}
       />
       <AlternatingSection
-        title="Electronics Engineering"
-        content="The Electronics Engineering division focuses on development and application of electronic circuits and systems."
+        title="Electrical Engineering"
+        content="The Electrical Engineering division focuses on the design, development, and application of electrical systems and components within the nuclear power industry."
         items={[
-          "Digital Electronics",
-          "Analog Electronics",
-          "Microelectronics",
-          "Embedded Systems",
-          "Communication Systems",
+          "Electric devices and Equipements",
+          "Electric machines",
+          "Electric engineering",
+          "Power electronics",
+          "Power generation systems",
+          "Electric measuring devices",
+          "Electrical Drawing",
         ]}
         image={
           <Image
@@ -51,11 +56,12 @@ const AcademicsDepartementsSection: FC = () => {
         title="Mechanical Engineering"
         content="The Mechanical Engineering division focuses on the application of mechanical systems and components."
         items={[
-          "Solid Mechanics",
-          "Thermodynamics",
-          "Fluid Mechanics",
+          "Engineering Science",
+          "Mechanical technology",
+          "Maintenance and operation",
           "Machine Design",
           "Materials Science",
+          "Measurement",
         ]}
         image={
           <Image

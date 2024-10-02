@@ -7,7 +7,10 @@ interface Props {
 
 const AnnouncementContent: React.FC<Props> = ({ content }) => {
   return (
-    <article className="markdown-content prose lg:prose-xl flex justify-center w-full">
+    <article
+      className="markdown-content prose lg:prose-xl flex justify-center w-full"
+      dir="auto"
+    >
       <ReactMarkdown className="max-w-2xl" children={content} />
     </article>
   );

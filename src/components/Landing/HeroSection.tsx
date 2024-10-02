@@ -14,21 +14,31 @@ const HeroSection = () => {
       autoplayDelay={10_000}
     >
       <CarouselItem
-        title="1234"
-        description="1234"
+        title={
+          <>
+            Welcome to <br />
+            The First and Only
+          </>
+        }
+        description="Nuclear Energy Shcool in African and Middle-East."
         imageSrc="/landing2.jpg"
         imageAlt="1234"
       />
       <CarouselItem
-        title="1234"
-        description="1234"
+        title="The Egyptian ambitious nuclear energy program"
+        description="Excellence in Advanced Nuclear Education"
         imageSrc="/landing4.jpg"
         imageAlt="1234"
       />
       <CarouselItem
-        title="1234"
-        description="1234"
-        imageSrc="/landing1.jpg"
+        title={
+          <>
+            Shaping the Future <br />
+            of Nuclear Energy
+          </>
+        }
+        description="in Elite Technological Engineering Education"
+        imageSrc="/landing5.jpg"
         imageAlt="1234"
       />
     </Carousel>
@@ -36,3 +46,7 @@ const HeroSection = () => {
 };
 
 export default HeroSection;
+//title="Welcome to El-Dabaa Nuclear School"
+//description="Pioneering the Future of Nuclear Energy in Egypt."
+
+//Leading the Way
