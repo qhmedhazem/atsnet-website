@@ -98,11 +98,11 @@ export default function MobileNavMenu({ isScrolled }: Props) {
           Admission
         </Link>
         <Link
-          href="/alumni"
+          href="/extracurriculars"
           className="text-white text-3xl"
           onClick={toggleMenu}
         >
-          Alumni
+          Extracurriculars
         </Link>
         <Link
           href="/contact"

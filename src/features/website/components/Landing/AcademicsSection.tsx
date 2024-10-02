@@ -1,21 +1,24 @@
-import { FC } from "react";
-import Image from "next/image";
 import AlternatingSection from "@/components/AlteratingSection";
-import StatItem from "@/components/StatItem";
+import Image from "next/image";
+import StatItem from "../../../../components/StatItem";
 
-const AcademicsInfoSection: FC = () => {
+const AcademicsSectionImage = () => {
+  return (
+    <Image
+      src="/electric_motor.jpg"
+      alt="School"
+      width={1024}
+      height={1024}
+      className="rounded-md object-cover object-center"
+    />
+  );
+};
+
+const AcademicsSection = () => {
   return (
     <AlternatingSection
       id="academics"
-      image={
-        <Image
-          src="/books.jpg"
-          alt="School"
-          width={500}
-          height={500}
-          className="rounded-md"
-        />
-      }
+      image={<AcademicsSectionImage />}
       subtitle="academics"
       title="Rich Technology Curriculum"
       reverse
@@ -36,4 +39,4 @@ const AcademicsInfoSection: FC = () => {
   );
 };
 
-export default AcademicsInfoSection;
+export default AcademicsSection;

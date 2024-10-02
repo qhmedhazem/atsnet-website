@@ -38,7 +38,7 @@ export default function DesktopNavMenu(props: Props) {
                       width={108}
                       height={108}
                       src="/brand.png"
-                      alt="المدرسة الفنية المتقدمة لتكنولوجيا الطاقة النووية - ATSNET"
+                      alt="المدرسة الفنية المتقدمة لتكنولوجيا الطاقة النووية - ATSNEE"
                     />
                     <div className="mb-2 mt-4 text-lg font-medium">
                       About School
@@ -84,9 +84,9 @@ export default function DesktopNavMenu(props: Props) {
         </NavigationMenuItem>
 
         <NavigationMenuItem>
-          <Link href="/alumni" legacyBehavior passHref>
+          <Link href="/extracurriculars" legacyBehavior passHref>
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-              Alumni
+              Extracurriculars
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>

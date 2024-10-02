@@ -1,6 +1,6 @@
 import { NextRequest } from "next/server";
 import { PrismaClient } from "@prisma/client";
-import { newsLetterSchema } from "@/features/website/components/Landing/newsletter/validation/newsLetterSchema";
+import { newsLetterSchema } from "@/features/website/validation/newsLetterSchema";
 import { z } from "zod";
 
 const prisma = new PrismaClient();

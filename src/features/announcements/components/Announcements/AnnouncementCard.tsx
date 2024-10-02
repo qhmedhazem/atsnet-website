@@ -33,7 +33,7 @@ const AnnouncementCard: React.FC<Props> = ({ announcement, href }) => {
           <Markdown className="text-gray-600 line-clamp-2 h-12">
             {announcement.content}
           </Markdown>
-          {announcement.imageURL && (
+          {/* {announcement.imageURL && (
             <div className="w-full h-64 relative overflow-hidden rounded-xl bg-accent">
               <img
                 src={announcement.imageURL || undefined}
@@ -41,7 +41,7 @@ const AnnouncementCard: React.FC<Props> = ({ announcement, href }) => {
                 className="h-full w-full object-contain"
               />
             </div>
-          )}
+          )} */}
         </CardContent>
       </Link>
     </Card>

@@ -9,18 +9,25 @@ import {
 import { FC, HTMLAttributes } from "react";
 import { cn } from "@/lib/utils";
 
-interface Props extends HTMLAttributes<HTMLUListElement> {}
+interface Props extends HTMLAttributes<HTMLUListElement> {
+  containerClassName?: string;
+}
 
 const AdmissionStages: FC<Props> = ({ className, ...props }) => {
   return (
-    <ul
-      className={cn("flex flex-col gap-12 items-center my-8", className)}
-      {...props}
-    >
-      {admissionStages.map((stage, i) => (
-        <AdmissionStageCard key={i} {...stage} />
-      ))}
-    </ul>
+    <div className={cn("space-y-12", props.containerClassName)}>
+      <div className="w-full">
+        <hr className="w-20 h-2 rounded-xl bg-light-blue-500" />
+      </div>
+      <ul
+        className={cn("flex flex-col gap-12 items-center my-8", className)}
+        {...props}
+      >
+        {admissionStages.map((stage, i) => (
+          <AdmissionStageCard key={i} {...stage} />
+        ))}
+      </ul>
+    </div>
   );
 };
 
@@ -40,7 +47,7 @@ const admissionStages: AdmissionStageProps[] = [
     children: <AdmissionStage2 />,
   },
   {
-    imageSrc: "/landing2.jpg",
+    imageSrc: "/landing5.jpg",
     imageAlt: "test",
     step: 3,
     children: <AdmissionStage3 />,

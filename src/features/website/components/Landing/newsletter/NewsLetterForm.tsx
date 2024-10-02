@@ -15,12 +15,15 @@ import {
   FormMessage,
 } from "@/components/ui/Form";
 import { Input } from "@/components/ui/Input";
-import { useNewsLetterSubscribe } from "../hooks/useNewsLetterSubscribe";
+import { useNewsLetterSubscribe } from "../../../hooks/useNewsLetterSubscribe";
 import { ErrorMessage } from "@/components/ui/ErrorMessage";
 
 const NewsLetterForm = () => {
   const { mutation, form, handleSubmit, serverError } =
     useNewsLetterSubscribe();
+
+  const isSubscribed =
+    mutation.isSuccess || mutation.isError || mutation.isPending;
 
   return (
     <Form {...form}>
@@ -33,6 +36,7 @@ const NewsLetterForm = () => {
               <FormItem className="w-full">
                 <FormControl>
                   <Input
+                    disabled={isSubscribed}
                     className="text-black rounded-r-none"
                     placeholder="Enter your email address"
                     {...field}
@@ -42,13 +46,14 @@ const NewsLetterForm = () => {
             )}
           />
           <Button
-            isLoading={mutation.isPending}
-            disabled={mutation.isSuccess || mutation.isError}
+            disabled={
+              mutation.isSuccess || mutation.isError || mutation.isPending
+            }
             type="submit"
             size="lg"
             className="rounded-l-none"
           >
-            Subscribe
+            {isSubscribed ? "Subscribed" : "Subscribe"}
           </Button>
         </div>
       </form>

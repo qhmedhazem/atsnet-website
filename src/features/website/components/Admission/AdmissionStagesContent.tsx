@@ -25,7 +25,7 @@ export const AdmissionStage2 = () => {
     <AdmissionStage title="Stage #2">
       <p>
         The second stage is a more intensive evaluation process that takes place
-        at the Military Technical College in Giza. This stage includes a
+        at the Military Technical College in Cairo. This stage includes a
         two-week qualification period, during which candidates undergo a series
         of tests and assessments, including
       </p>
@@ -42,10 +42,12 @@ export const AdmissionStage3 = () => {
   return (
     <AdmissionStage title="Stage #3">
       <p>
-        Finally, candidates must pass a security clearance conducted by the
-        Ministry of Defense and Education leaders. This clearance involves a
-        thorough background check and assessment of the candidate's suitability
-        for working in the nuclear industry.
+        In this crucial stage of the admission process, candidates competing for
+        a place among the top 60 students nationwide must complete a security
+        clearance conducted by the Ministry of Defense and Education leaders.
+        This involves a thorough background check to assess each candidate's
+        suitability for a career in nuclear technology, ensuring that only the
+        most qualified individuals are selected for this vital field.
       </p>
     </AdmissionStage>
   );

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 const PowerPlantOverview = () => {
   return (
@@ -19,7 +20,14 @@ const PowerPlantOverview = () => {
             reactor began in 2021, and it is expected to become operational by
             2028. Upon completion, El-Dabaa will play a crucial role in Egypt’s
             transition to nuclear energy, contributing significantly to the
-            nation’s power grid and economic development.
+            nation’s power grid and economic development,{" "}
+            <Link
+              className="text-light-blue-500 underline"
+              href="https://nppa.gov.eg/ElDabaa"
+            >
+              More Information
+            </Link>
+            .
           </p>
         </div>
         <div className="w-full gap-8 flex flex-col md:flex-row justify-around items-center">

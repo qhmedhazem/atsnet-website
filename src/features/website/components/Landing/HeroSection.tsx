@@ -2,6 +2,7 @@
 import { Carousel } from "@material-tailwind/react";
 import { CarouselItem } from "./hero/CarouselItem";
 import { HeroCursor } from "./hero/HeroCursor";
+import { LinkButton } from "@/components/ui/Button";
 
 const HeroSection = () => {
   return (
@@ -19,23 +20,47 @@ const HeroSection = () => {
         autoplayDelay={10_000}
       >
         <CarouselItem
-          title="1234"
-          description="1234"
+          title="Explore Advanced Nuclear Technology Education"
+          description="The next generation of energy professionals."
           imageSrc="/landing2.jpg"
           imageAlt="1234"
-        />
+        >
+          <LinkButton
+            size="lg"
+            href="/about"
+            className="transition-all bg-light-blue-800 hover:bg-light-blue-900"
+          >
+            Learn More
+          </LinkButton>
+        </CarouselItem>
         <CarouselItem
-          title="1234"
-          description="1234"
+          title="Innovative Engineering Projects"
+          description="Creative solutions and technical advancements demonstrated by students and researchers."
           imageSrc="/landing4.jpg"
-          imageAlt="1234"
-        />
+          imageAlt="Innovative Engineering Projects"
+        >
+          <LinkButton
+            size="lg"
+            href="/academics"
+            className="transition-all bg-light-blue-800 hover:bg-light-blue-900"
+          >
+            Academics
+          </LinkButton>
+        </CarouselItem>
         <CarouselItem
-          title="1234"
-          description="1234"
-          imageSrc="/landing1.jpg"
-          imageAlt="1234"
-        />
+          title="Where Talent Meets Opportunity"
+          description="A transparent and fair process to identify talented individuals for our programs."
+          imageSrc="/landing5.jpg"
+          imageAlt="A transparent and fair process to identify talented individuals for our programs."
+        >
+          <LinkButton
+            size="lg"
+            href="/admission"
+            className="transition-all bg-light-blue-800 hover:bg-light-blue-900"
+          >
+            Admission
+          </LinkButton>
+        </CarouselItem>
       </Carousel>
       <HeroCursor />
     </section>

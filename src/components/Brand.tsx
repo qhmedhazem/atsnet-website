@@ -9,22 +9,20 @@ interface Props {
 
 const Brand: FC<Props> = ({ withText = true, withDescription = true }) => {
   return (
-    <Link
-      className="flex gap-4 justify-center items-center  uppercase"
-      href="/"
-    >
+    <Link className="flex gap-4 justify-center items-center uppercase" href="/">
       <Image
-        width={64}
-        height={64}
+        width={1024}
+        height={1024}
         src="/brand.png"
-        alt="المدرسة الفنية المتقدمة لتكنولوجيا الطاقة النووية - ATSNET"
+        alt="المدرسة المتقدمة للتكنولوجيا التطبيقية والطاقة النووية - ATSNEE"
+        className="w-16 h-16"
       />
       {withText && (
         <div>
-          <p className="text-2xl font-bold">ATSNET</p>
+          <p className="text-2xl font-bold">ATSNEE</p>
           {withDescription && (
             <p className="text-xs font-light">
-              Advanced Technology School For Nuclear Energy
+              Applied Technology School for Nuclear Energy in El-Dabaa
             </p>
           )}
         </div>

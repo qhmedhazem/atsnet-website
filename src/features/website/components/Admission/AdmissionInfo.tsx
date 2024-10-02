@@ -15,7 +15,7 @@ const AdmissionInfo: FC<Props> = ({ className, children, ...props }) => {
           the program. Only the most exceptional students who demonstrate
           excellence in academics, physical fitness, and personal qualities will
           be selected to join this prestigious institution. Apply now to join{" "}
-          ATSNET through the{" "}
+          ATSNEE through the{" "}
           <Link
             className="text-light-blue-500 underline"
             href="https://dualedu.moe.gov.eg/loginWithMsSucess"

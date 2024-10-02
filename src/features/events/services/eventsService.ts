@@ -13,15 +13,18 @@ export const fetchEventById = async (id: string) => {
 };
 
 export const previewEvents = async (limit?: number) => {
-  return db.event.findMany({
-    where: {
-      published: true,
-    },
-    orderBy: {
-      createdAt: "desc",
-    },
-    take: limit,
-  });
+  return db.event
+    .findMany({
+      where: {
+        published: true,
+      },
+      orderBy: {
+        createdAt: "desc",
+      },
+      take: limit,
+    })
+    .catch((e) => [])
+    .then((res) => res);
 };
 
 export const fetchAllEvents = async () => {

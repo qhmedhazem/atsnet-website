@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/Badge";
 import { CalendarIcon, MapPinIcon, StickyNote } from "lucide-react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 
 interface Props {
   event: Event;
@@ -39,11 +40,13 @@ const EventLandingCard: React.FC<Props> = ({ event, href }) => {
   return (
     <Card className="bg-white w-full max-w-md mx-auto rounded-lg overflow-hidden">
       <div className="flex-1 flex flex-col">
-        <div className="h-40 w-full overflow-hidden">
-          <img
+        <div className="h-48 w-full overflow-hidden">
+          <Image
             src={event.imageURL || "/landing2.jpg"}
             alt={event.title}
             className="object-cover w-full h-full"
+            width={500}
+            height={280}
           />
         </div>
 
@@ -59,7 +62,7 @@ const EventLandingCard: React.FC<Props> = ({ event, href }) => {
               </h2>
               {!event.published && <Badge>Unpublished</Badge>}
             </div>
-            <Markdown className="text-sm font-light line-clamp-2">
+            <Markdown className="text-sm font-light line-clamp-2 h-10">
               {event.content}
             </Markdown>
 

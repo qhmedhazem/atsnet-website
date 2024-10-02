@@ -13,7 +13,7 @@ const Navbar = () => {
   return (
     <div
       className={cn(
-        "z-20 max-w-full fixed w-screen transition-colors h-24 duration-300 text-primary-foreground",
+        "z-20 max-w-full fixed w-screen transition-colors h-20 duration-300 text-primary-foreground",
         isScrolled ? "bg-background text-primary" : ""
       )}
     >

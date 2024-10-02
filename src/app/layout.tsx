@@ -10,7 +10,7 @@ import ModalWrapper from "@/components/Modal/ModalWrapper";
 const alex = Alexandria({ subsets: ["arabic"] });
 
 export const metadata: Metadata = {
-  title: "Advanced Technology School In Nuclear Energy (ATSNET)",
+  title: "Advanced Technology School In Nuclear Energy (ATSNEE)",
   description: "",
 };
 

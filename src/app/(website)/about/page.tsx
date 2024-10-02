@@ -7,7 +7,7 @@ export default function About() {
       imageSrc="/landing2.jpg"
       imageAlt="Advanced Technology School For Nuclear Energy Campus"
       title="About"
-      description="About ATSNET"
+      description="Preparing Students for Real-World Energy Challenges."
     >
       <Overview />
     </PageLayout>

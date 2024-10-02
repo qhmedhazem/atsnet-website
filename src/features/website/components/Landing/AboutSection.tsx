@@ -1,15 +1,15 @@
 import AlternatingSection from "@/components/AlteratingSection";
 import Image from "next/image";
-import StatItem from "./stats/StatItem";
+import StatItem from "../../../../components/StatItem";
 
 const AboutSectionImage = () => {
   return (
     <Image
       src="/landing1.jpg"
       alt="School"
-      width={500}
-      height={500}
-      className="rounded-md"
+      width={1024}
+      height={1024}
+      className="rounded-md object-cover object-center"
     />
   );
 };
@@ -19,7 +19,8 @@ const AboutSection = () => {
     <AlternatingSection
       id="about"
       image={<AboutSectionImage />}
-      title="About School"
+      subtitle="ATSNEE"
+      title="The Future of Nuclear Education"
     >
       <p>
         El-Dabaa Nuclear School is a premier institution dedicated to educating

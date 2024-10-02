@@ -19,7 +19,7 @@ export default function Error({
 
   return (
     <main className="flex flex-col gap-8 py-28 max-w-3xl m-[0_auto]">
-      <h2 className="text-3xl text-center">ATSNET Website Crashed!</h2>
+      <h2 className="text-3xl text-center">ATSNEE Website Crashed!</h2>
       <div className="w-full flex gap-4">
         <Button variant="outline" className="flex-1" onClick={() => reset()}>
           Restart

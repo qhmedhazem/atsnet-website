@@ -44,14 +44,14 @@ export const Calendar = ({
           "text-muted-foreground rounded-md w-9 font-normal text-[0.8rem]",
         [UI.Week]: "flex w-full mt-2",
         [UI.Day]:
-          "h-9 w-9 text-center rounded-md text-sm p-0 relative [&:has([aria-selected].day-range-end)]:rounded-r-md [&:has([aria-selected].day-outside)]:bg-accent/50 [&:has([aria-selected])]:bg-accent first:[&:has([aria-selected])]:rounded-l-md last:[&:has([aria-selected])]:rounded-r-md focus-within:relative focus-within:z-20",
+          "h-9 w-9 text-center rounded-md text-sm p-0 relative [&:has([aria-selected].day-range-end)]:rounded-r-md [&:has([aria-selected].day-outside)]:bg-accent/50 [&:has([aria-selected])]:bg-accent first:[&:has([aria-selected])]:rounded-l-md last:[&:has([aria-selected])]:rounded-r-md focus-within:relative focus-within:z-20 [&:has([aria-selected])]:hover:bg-red-700",
         [UI.DayButton]: cn(
           buttonVariants({ variant: "ghost" }),
-          "h-9 w-9 p-0 font-normal aria-selected:opacity-100 hover:bg-primary hover:text-primary-foreground"
+          "h-9 w-9 p-0 font-normal aria-selected:opacity-100 hover:bg-blue-700 hover:text-primary-foreground focus:bg-red-700 focus:text-primary-foreground"
         ),
         [SelectionState.range_end]: "day-range-end",
         [SelectionState.selected]:
-          "bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground",
+          "bg-red-600 text-primary-foreground hover:bg-red-700 focus:bg-red-700 hover:text-primary-foreground focus:text-primary-foreground",
         [SelectionState.range_middle]:
           "aria-selected:bg-accent aria-selected:text-accent-foreground",
         [DayFlag.today]: "bg-accent text-accent-foreground",

@@ -11,12 +11,12 @@ const AcademicsPage: FC = () => {
         imageSrc="/landing2.jpg"
         imageAlt="Advanced Technology School For Nuclear Energy Campus"
         title="Academics"
-        className="max-w-full w-full space-y-24 py-12"
+        className="container w-full min-h-fit py-24"
       >
         <AcademicsInfoSection />
       </PageLayout>
       <AcademicsCurriculumSection />
-      <div className="container max-w-full w-full space-y-24 py-12">
+      <div className="container w-full py-24 space-y-24">
         <AcademicsDepartementsSection />
       </div>
     </>

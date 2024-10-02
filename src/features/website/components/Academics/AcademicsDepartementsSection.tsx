@@ -6,6 +6,7 @@ const AcademicsDepartementsSection: FC = () => {
   return (
     <>
       <AlternatingSection
+        subtitle="Electrical Engineering"
         title="Electrical Engineering"
         items={[
           "Electrical Circuits",
@@ -16,10 +17,10 @@ const AcademicsDepartementsSection: FC = () => {
         ]}
         image={
           <Image
-            src="/landing2.jpg"
+            src="/electric_motor.jpg"
             alt="School"
-            width={500}
-            height={500}
+            width={1024}
+            height={1024}
             className="rounded-md"
           />
         }
@@ -32,6 +33,7 @@ const AcademicsDepartementsSection: FC = () => {
         </p>
       </AlternatingSection>
       <AlternatingSection
+        subtitle="Electronics Engineering"
         title="Electronics Engineering"
         items={[
           "Digital Electronics",
@@ -42,10 +44,10 @@ const AcademicsDepartementsSection: FC = () => {
         ]}
         image={
           <Image
-            src="/landing2.jpg"
-            alt="School"
-            width={500}
-            height={500}
+            src="/logic_gates.jpg"
+            alt="Logic Gates"
+            width={1024}
+            height={1024}
             className="rounded-md"
           />
         }
@@ -57,6 +59,7 @@ const AcademicsDepartementsSection: FC = () => {
         </p>
       </AlternatingSection>
       <AlternatingSection
+        subtitle="Mechanical Engineering"
         title="Mechanical Engineering"
         items={[
           "Solid Mechanics",
@@ -69,15 +72,17 @@ const AcademicsDepartementsSection: FC = () => {
           <Image
             src="/landing2.jpg"
             alt="School"
-            width={500}
-            height={500}
+            width={1024}
+            height={1024}
             className="rounded-md"
           />
         }
         reverse={false}
       >
-        The Mechanical Engineering division focuses on the application of
-        mechanical systems and components.
+        <p>
+          The Mechanical Engineering division focuses on the application of
+          mechanical systems and components.
+        </p>
       </AlternatingSection>
     </>
   );

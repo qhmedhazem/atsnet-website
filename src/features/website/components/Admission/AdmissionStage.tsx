@@ -13,7 +13,7 @@ const AdmissionStage: FC<Props> = ({
 }) => {
   return (
     <section className={cn("w-full ", className)} {...props}>
-      <div className="space-y-2 w-full">
+      <div className="space-y-4 w-full">
         <h2 className="text-3xl font-bold lg:mt-8">{title}</h2>
         <div className="space-y-2">{children}</div>
       </div>

@@ -36,7 +36,7 @@ const admissionStages: ScrollCardItem[] = [
     children: <AdmissionStage2 />,
   },
   {
-    imageSrc: "/landing2.jpg",
+    imageSrc: "/landing5.jpg",
     imageAlt: "test",
     step: 3,
     children: <AdmissionStage3 />,

@@ -7,24 +7,34 @@ import { previewEvents } from "@/features/events/services/eventsService";
 import { Annoncement, Event } from "@prisma/client";
 import AdmissionSection from "@/features/website/components/Landing/AdmissionSection";
 import UpcomingEventsSection from "@/features/website/components/Landing/UpcomingEventsSection";
-import NewsLetterSection from "@/features/website/components/Landing/newsletter/components/NewsLetterSection";
+import NewsLetterSection from "@/features/website/components/Landing/newsletter/NewsLetterSection";
+import AcademicsSection from "@/features/website/components/Landing/AcademicsSection";
+import AcademicsCurriculumSection from "@/features/website/components/Academics/AcademicsCurriculumSection";
 
 export default async function Home() {
   const [announcements, events]: [Annoncement[], Event[]] = await Promise.all([
     previewAnnouncements(3),
-    previewEvents(),
+    previewEvents(3),
   ]);
 
   return (
-    <main className="justify-center flex flex-col gap-20 pb-12">
+    <main className="justify-center flex flex-col gap-28">
       <HeroSection />
-      <div className="w-full container flex flex-col gap-20 ">
+      <div className="w-full container flex flex-col gap-28">
         <AboutSection />
-        <SchoolNewsSection announcements={announcements} />
+        <AcademicsSection />
       </div>
-      <AdmissionSection />
+
+      {announcements.length > 0 && (
+        <SchoolNewsSection
+          className="container"
+          announcements={announcements}
+        />
+      )}
+      <AcademicsCurriculumSection />
+      {/* <AdmissionSection /> */}
       <div className="container flex flex-col gap-20">
-        <UpcomingEventsSection events={events} />
+        {events.length > 0 && <UpcomingEventsSection events={events} />}
       </div>
       <NewsLetterSection />
     </main>
