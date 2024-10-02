@@ -50,7 +50,7 @@ const HeroSection = () => {
         <CarouselItem
           title="Where Talent Meets Opportunity"
           description="A transparent and fair process to identify talented individuals for our programs."
-          imageSrc="/landing5.jpg"
+          imageSrc="/landing6.jpg"
           imageAlt="A transparent and fair process to identify talented individuals for our programs."
         >
           <LinkButton

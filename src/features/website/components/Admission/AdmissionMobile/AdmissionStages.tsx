@@ -47,7 +47,7 @@ const admissionStages: AdmissionStageProps[] = [
     children: <AdmissionStage2 />,
   },
   {
-    imageSrc: "/landing5.jpg",
+    imageSrc: "/landing6.jpg",
     imageAlt: "test",
     step: 3,
     children: <AdmissionStage3 />,

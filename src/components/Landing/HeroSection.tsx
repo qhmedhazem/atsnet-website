@@ -38,7 +38,7 @@ const HeroSection = () => {
           </>
         }
         description="in Elite Technological Engineering Education"
-        imageSrc="/landing5.jpg"
+        imageSrc="/landing6.jpg"
         imageAlt="1234"
       />
     </Carousel>
