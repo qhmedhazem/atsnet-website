@@ -3,11 +3,7 @@ import Link from "next/link";
 
 const PowerPlantOverview = () => {
   return (
-<<<<<<< HEAD
     <div className="w-full px-4 flex justify-center py-8">
-=======
-    <div className="w-full flex justify-center py-8">
->>>>>>> dbd3074ce339023a733cc62e4a5a28aa311563cd
       <div className="max-w-3xl flex flex-col justify-center items-center gap-16">
         <div className="w-full flex flex-col gap-4">
           <h1 className="text-3xl font-bold">
