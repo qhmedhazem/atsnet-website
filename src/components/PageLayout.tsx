@@ -56,7 +56,7 @@ export const PageLayout: FC<Props> = ({
         <main
           {...props}
           className={cn(
-            "max-w-5xl mt-8 w-full flex flex-col items-center",
+            "container py-12 w-full flex flex-col items-center",
             props.className
           )}
         />

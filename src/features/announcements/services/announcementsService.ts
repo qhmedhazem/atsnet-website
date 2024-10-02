@@ -12,7 +12,7 @@ export const fetchAnnouncementById = async (id: string) => {
   });
 };
 
-export const previewAnnouncements = async () => {
+export const previewAnnouncements = async (limit?: number) => {
   return db.annoncement.findMany({
     where: {
       published: true,
@@ -20,6 +20,7 @@ export const previewAnnouncements = async () => {
     orderBy: {
       createdAt: "desc",
     },
+    take: limit,
   });
 };
 

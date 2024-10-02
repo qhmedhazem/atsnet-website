@@ -30,15 +30,15 @@ const AnnouncementCard: React.FC<Props> = ({ announcement, href }) => {
         </CardHeader>
 
         <CardContent className="flex flex-col gap-4 px-6 pt-4 pb-4">
-          <Markdown className="text-gray-600 line-clamp-3">
+          <Markdown className="text-gray-600 line-clamp-2 h-12">
             {announcement.content}
           </Markdown>
           {announcement.imageURL && (
-            <div className="h-64 w-full overflow-hidden rounded-lg">
+            <div className="w-full h-64 relative overflow-hidden rounded-xl bg-accent">
               <img
-                src={announcement.imageURL}
-                alt={announcement.title}
-                className="object-center w-auto h-auto"
+                src={announcement.imageURL || undefined}
+                alt="Banner Image"
+                className="h-full w-full object-contain"
               />
             </div>
           )}

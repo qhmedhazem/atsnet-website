@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const AcademicsInfoSection: FC = () => {
   return (
-    <section className="container mx-auto flex flex-col gap-8 items-center lg:flex-row lg:items-start lg:space-x-8">
+    <section className="mx-auto flex flex-col gap-8 items-center lg:flex-row lg:items-start lg:space-x-8">
       <div className="space-y-4 lg:w-1/2">
         <h2 className="text-4xl font-bold lg:mt-8">Academics</h2>
         <p>

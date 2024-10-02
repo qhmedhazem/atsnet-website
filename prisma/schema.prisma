@@ -19,6 +19,16 @@ model User {
   createdAt DateTime @default(now())
   annoncements     Annoncement[] @relation("userAnnoncements")
   events     Event[] @relation("userEvents")
+  attachments  Attachment[] @relation("userAttachments")
+}
+
+model Attachment {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId    String   @db.ObjectId
+  user      User     @relation("userAttachments", fields: [userId], references: [id])
+  extension String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model Annoncement {
@@ -42,7 +52,8 @@ model Event {
   content   String
   imageURL  String?
   registerLink  String
-  date      DateTime
+  location  String
+  date      DateTime 
   author    User?    @relation("userEvents", fields: [authorId], references: [id])
   authorId  String   @db.ObjectId
 }
@@ -55,6 +66,13 @@ model Message {
     content   String
     replied   Boolean
     createdAt DateTime @default(now())
+}
+
+model NewsLetter {
+    id        String   @id @default(auto()) @map("_id") @db.ObjectId
+    email     String   @unique
+    unsubscribeToken   String   @default("")
+    subscribedAt DateTime @default(now())
 }
 
 enum Role {
