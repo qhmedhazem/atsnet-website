@@ -12,7 +12,6 @@ import {
 } from "@/components/ui/Form";
 import { Input } from "@/components/ui/Input";
 import { useAuthForm } from "../hooks/useAuthForm";
-import { Textarea } from "@/components/ui/Textarea";
 import { ErrorMessage } from "@/components/ui/ErrorMessage";
 
 const AuthForm = () => {
