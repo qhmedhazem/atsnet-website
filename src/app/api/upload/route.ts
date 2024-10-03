@@ -26,16 +26,10 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json(attachment);
   } catch (error) {
-    console.log(error)
+    console.log(error);
     return NextResponse.json(
       { message: "Failed to upload file or save data." },
       { status: 500 }
     );
   }
 }
-
-export const config = {
-  api: {
-    bodyParser: false,
-  },
-};
