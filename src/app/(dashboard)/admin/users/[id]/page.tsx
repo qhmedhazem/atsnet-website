@@ -33,3 +33,5 @@ export default async function UserSettingsManagement({
     </CRUDLayout>
   );
 }
+
+export const revalidate = 0;

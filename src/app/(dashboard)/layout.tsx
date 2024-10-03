@@ -32,3 +32,5 @@ export default async function UserLayout({ children }: Props) {
 
   return <SettingsLayout>{children}</SettingsLayout>;
 }
+
+export const revalidate = 0;

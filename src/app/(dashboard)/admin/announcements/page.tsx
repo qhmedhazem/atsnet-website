@@ -21,3 +21,5 @@ export default async function AnnouncementsAdministration() {
     </CRUDLayout>
   );
 }
+
+export const revalidate = 0;

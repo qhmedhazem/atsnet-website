@@ -24,3 +24,5 @@ export default async function Announcements({
     </PageLayout>
   );
 }
+
+export const revalidate = 180;

@@ -17,3 +17,4 @@ export default async function MessagesAdministration() {
     </CRUDLayout>
   );
 }
+export const revalidate = 0;

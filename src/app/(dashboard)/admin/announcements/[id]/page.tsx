@@ -25,3 +25,5 @@ export default async function AnnouncementManagementPage({
     </CRUDLayout>
   );
 }
+
+export const revalidate = 0;

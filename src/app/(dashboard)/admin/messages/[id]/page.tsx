@@ -23,3 +23,5 @@ export default async function MessageManagementPage({
     </CRUDLayout>
   );
 }
+
+export const revalidate = 0;

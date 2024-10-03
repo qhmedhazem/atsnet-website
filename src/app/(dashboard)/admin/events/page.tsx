@@ -18,3 +18,5 @@ export default async function EventsAdministration() {
     </CRUDLayout>
   );
 }
+
+export const revalidate = 0;

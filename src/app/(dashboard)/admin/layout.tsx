@@ -16,3 +16,5 @@ export default async function AdminLayout({ children }: Props) {
 
   return <>{children}</>;
 }
+
+export const revalidate = 0;

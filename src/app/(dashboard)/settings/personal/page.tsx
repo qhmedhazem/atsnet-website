@@ -29,3 +29,5 @@ export default async function UserPersonalSettings() {
     </CRUDLayout>
   );
 }
+
+export const revalidate = 0;

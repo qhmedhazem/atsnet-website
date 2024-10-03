@@ -14,3 +14,5 @@ export default async function UsersAdministration() {
     </CRUDLayout>
   );
 }
+
+export const revalidate = 0;
