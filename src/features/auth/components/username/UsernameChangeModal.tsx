@@ -46,7 +46,7 @@ export const UsernameChangeModal: FC<Props> = ({ sameUser, user }) => {
           <DialogHeader>
             <DialogTitle>Change Username</DialogTitle>
             <DialogDescription>
-              Change your handle. Click confirm when you're done.
+              Change your handle. Click confirm when you&apos;re done.
             </DialogDescription>
           </DialogHeader>
           <UsernameChangeForm
@@ -68,7 +68,7 @@ export const UsernameChangeModal: FC<Props> = ({ sameUser, user }) => {
         <DrawerHeader className="text-left">
           <DrawerTitle>Change Username</DrawerTitle>
           <DrawerDescription>
-            Change your handle. Click confirm when you're done.
+            Change your handle. Click confirm when you&apos;re done.
           </DrawerDescription>
         </DrawerHeader>
         <UsernameChangeForm

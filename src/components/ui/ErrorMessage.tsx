@@ -15,3 +15,5 @@ export const ErrorMessage = React.forwardRef<
     </p>
   );
 });
+
+ErrorMessage.displayName = "ErrorMessage";

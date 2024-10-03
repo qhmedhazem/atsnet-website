@@ -44,7 +44,7 @@ const AnnouncementInfoForm: FC<Props> = ({ announcement }) => {
         <Button isLoading={isPending} type="submit" size="lg">
           Confirm
         </Button>
-        {serverError && <ErrorMessage children={serverError} />}
+        {serverError && <ErrorMessage>{serverError}</ErrorMessage>}
       </form>
     </Form>
   );

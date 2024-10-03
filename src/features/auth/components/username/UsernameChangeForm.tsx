@@ -85,7 +85,7 @@ const UsernameChangeForm: FC<Props> = ({ sameUser, user, onClose }) => {
             Cancel
           </Button>
         </div>
-        {serverError && <ErrorMessage children={serverError} />}
+        {serverError && <ErrorMessage>{serverError}</ErrorMessage>}
       </form>
     </Form>
   );

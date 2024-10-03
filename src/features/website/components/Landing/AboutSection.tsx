@@ -25,7 +25,7 @@ const AboutSection = () => {
       <p>
         El-Dabaa Nuclear School is a premier institution dedicated to educating
         and training the next generation of nuclear engineers and scientists. We
-        are proud to be a key component of Egypt's ambitious nuclear energy
+        are proud to be a key component of Egypt&apos;s ambitious nuclear energy
         program.
       </p>
       <div className="grid grid-cols-2 gap-3 md:gap-6">

@@ -11,12 +11,13 @@ const Overview = () => {
           <p className="text-lg">
             El-Dabaa Nuclear School is a premier institution dedicated to
             educating and training the next generation of nuclear engineers and
-            scientists. We are proud to be a key component of Egypt's ambitious
-            nuclear energy program. Our curriculum is designed to provide
-            students with a comprehensive understanding of nuclear technology,
-            safety protocols, and technical departments. By fostering a culture
-            of innovation and excellence, we are preparing our graduates to play
-            a vital role in shaping the future of sustainable energy.
+            scientists. We are proud to be a key component of Egypt&apos;s
+            ambitious nuclear energy program. Our curriculum is designed to
+            provide students with a comprehensive understanding of nuclear
+            technology, safety protocols, and technical departments. By
+            fostering a culture of innovation and excellence, we are preparing
+            our graduates to play a vital role in shaping the future of
+            sustainable energy.
           </p>
         </div>
         <div className="w-full gap-8 flex flex-col md:flex-row justify-around items-center">

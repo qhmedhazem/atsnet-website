@@ -112,6 +112,7 @@ const ScrollSection: React.FC<Props> = ({ Card, items }) => {
               {...item}
               isFirst={isFirst}
               isLast={isLast}
+              key={step}
               step={step}
               isReversed={i % 2 == 1}
               isActivated={

@@ -11,7 +11,7 @@ const AnnouncementContent: React.FC<Props> = ({ content }) => {
       className="markdown-content prose lg:prose-xl flex justify-center w-full"
       dir="auto"
     >
-      <ReactMarkdown className="max-w-2xl" children={content} />
+      <ReactMarkdown className="max-w-2xl">{content}</ReactMarkdown>
     </article>
   );
 };

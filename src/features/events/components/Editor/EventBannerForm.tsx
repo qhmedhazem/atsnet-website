@@ -117,7 +117,7 @@ const EventBannerForm: FC<Props> = ({ event }) => {
             Confirm
           </Button>
         </div>
-        {serverError && <ErrorMessage children={serverError} />}
+        {serverError && <ErrorMessage>{serverError}</ErrorMessage>}
       </form>
     </Form>
   );

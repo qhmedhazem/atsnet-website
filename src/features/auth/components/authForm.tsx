@@ -55,7 +55,7 @@ const AuthForm = () => {
         >
           Login
         </Button>
-        {serverError && <ErrorMessage children={serverError} />}
+        {serverError && <ErrorMessage>{serverError}</ErrorMessage>}
       </form>
     </Form>
   );

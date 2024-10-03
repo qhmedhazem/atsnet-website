@@ -20,7 +20,7 @@ export async function DELETE(
 
   if (session.user.id === id)
     return Response.json(
-      { message: "You can't delete your account" },
+      { message: "You can&apos;t delete your account" },
       { status: 403 }
     );
 

@@ -45,8 +45,8 @@ export default function DesktopNavMenu(props: Props) {
                     </div>
                     <p className="text-sm leading-tight text-muted-foreground">
                       An introduction to the school’s mission, history, and
-                      dedication to training professionals for Egypt's peaceful
-                      nuclear energy project.
+                      dedication to training professionals for Egypt&apos;s
+                      peaceful nuclear energy project.
                     </p>
                   </Link>
                 </NavigationMenuLink>
@@ -60,7 +60,7 @@ export default function DesktopNavMenu(props: Props) {
                 career paths available for graduates.
               </ListItem>
               <ListItem href="/campus" title="Campus">
-                A look at the school's state-of-the-art campus, including
+                A look at the school&apos;s state-of-the-art campus, including
                 classrooms, labs, dormitories, and student amenities.
               </ListItem>
             </ul>

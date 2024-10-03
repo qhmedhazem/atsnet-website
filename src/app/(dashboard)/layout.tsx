@@ -30,5 +30,5 @@ export default async function UserLayout({ children }: Props) {
     );
   }
 
-  return <SettingsLayout children={children} />;
+  return <SettingsLayout>{children}</SettingsLayout>;
 }

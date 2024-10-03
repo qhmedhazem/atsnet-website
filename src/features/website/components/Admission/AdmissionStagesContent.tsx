@@ -45,9 +45,10 @@ export const AdmissionStage3 = () => {
         In this crucial stage of the admission process, candidates competing for
         a place among the top 60 students nationwide must complete a security
         clearance conducted by the Ministry of Defense and Education leaders.
-        This involves a thorough background check to assess each candidate's
-        suitability for a career in nuclear technology, ensuring that only the
-        most qualified individuals are selected for this vital field.
+        This involves a thorough background check to assess each
+        candidate&apos;s suitability for a career in nuclear technology,
+        ensuring that only the most qualified individuals are selected for this
+        vital field.
       </p>
     </AdmissionStage>
   );

@@ -67,4 +67,6 @@ const MarkdownEditor = forwardRef<MDXEditorMethods, Props>((props, ref) => {
   );
 });
 
+MarkdownEditor.displayName = "MarkdownEditor";
+
 export default MarkdownEditor;

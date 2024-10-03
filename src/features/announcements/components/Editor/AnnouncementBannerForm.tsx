@@ -119,7 +119,7 @@ const AnnouncementBannerForm: FC<Props> = ({ announcement }) => {
             Confirm
           </Button>
         </div>
-        {serverError && <ErrorMessage children={serverError} />}
+        {serverError && <ErrorMessage>{serverError}</ErrorMessage>}
       </form>
     </Form>
   );

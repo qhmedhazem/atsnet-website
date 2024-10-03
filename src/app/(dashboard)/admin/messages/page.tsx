@@ -4,11 +4,7 @@ import MessageCard from "@/features/contact/components/Messages/MessageCard";
 import { fetchAllMessages } from "@/features/contact/services/messagesService";
 import React, { ReactNode } from "react";
 
-interface Props {
-  children: ReactNode;
-}
-
-export default async function MessagesAdministration({ children }: Props) {
+export default async function MessagesAdministration() {
   const messages = await fetchAllMessages();
 
   return (
