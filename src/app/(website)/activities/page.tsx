@@ -13,7 +13,7 @@ export default async function Activities() {
   return (
     <PageLayout
       imageSrc="/landing2.jpg"
-      imageAlt="test"
+      imageAlt="Advanced Technology School For Nuclear Energy Campus"
       title="Activities"
       description="Competitions, Programs, Honours, etc."
     >
@@ -21,3 +21,5 @@ export default async function Activities() {
     </PageLayout>
   );
 }
+
+export const revalidate = 180;

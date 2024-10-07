@@ -20,7 +20,7 @@ export default async function Announcements() {
   return (
     <PageLayout
       imageSrc="/landing2.jpg"
-      imageAlt="test"
+      imageAlt="Advanced Technology School For Nuclear Energy Campus"
       title="Announecments"
       description="Stay updated with school admistration announcements."
     >

@@ -12,7 +12,7 @@ export default function About() {
   return (
     <PageLayout
       imageSrc="/landing1.jpg"
-      imageAlt="test"
+      imageAlt="Advanced Technology School For Nuclear Energy Campus"
       title="Admission"
       description="Join the Ranks of the Best! Your journey to excellence starts here."
       className="gap-6"

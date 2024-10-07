@@ -5,7 +5,6 @@ import SchoolNewsSection from "@/features/website/components/Landing/SchoolNewsS
 import { previewAnnouncements } from "@/features/announcements/services/announcementsService";
 import { previewEvents } from "@/features/events/services/eventsService";
 import { Annoncement, Event } from "@prisma/client";
-import AdmissionSection from "@/features/website/components/Landing/AdmissionSection";
 import UpcomingEventsSection from "@/features/website/components/Landing/UpcomingEventsSection";
 import NewsLetterSection from "@/features/website/components/Landing/newsletter/NewsLetterSection";
 import AcademicsSection from "@/features/website/components/Landing/AcademicsSection";
