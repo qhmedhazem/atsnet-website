@@ -1,5 +1,10 @@
+import type { Metadata } from "next";
 import { PageLayout } from "@/components/PageLayout";
 import Overview from "@/features/website/components/About/Overview";
+
+export const metadata: Metadata = {
+  title: "About",
+};
 
 export default function About() {
   return (

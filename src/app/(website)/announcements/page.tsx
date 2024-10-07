@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import AnnouncementsSection from "@/features/announcements/components/AnnouncementsSection";
 import EventsSection from "@/features/events/components/EventsSection";
 
@@ -5,6 +6,10 @@ import { PageLayout } from "@/components/PageLayout";
 import { Annoncement, Event } from "@prisma/client";
 import { previewAnnouncements } from "@/features/announcements/services/announcementsService";
 import { previewEvents } from "@/features/events/services/eventsService";
+
+export const metadata: Metadata = {
+  title: "Announcements",
+};
 
 export default async function Announcements() {
   const [announcements, events]: [Annoncement[], Event[]] = await Promise.all([

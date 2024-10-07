@@ -11,6 +11,11 @@ import NewsLetterSection from "@/features/website/components/Landing/newsletter/
 import AcademicsSection from "@/features/website/components/Landing/AcademicsSection";
 import AcademicsCurriculumSection from "@/features/website/components/Academics/AcademicsCurriculumSection";
 
+import type { Metadata } from "next";
+export const metadata: Metadata = {
+  title: "Home",
+};
+
 export default async function Home() {
   const [announcements, events]: [Annoncement[], Event[]] = await Promise.all([
     previewAnnouncements(3),

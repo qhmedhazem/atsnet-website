@@ -1,14 +1,27 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { PageLayout } from "@/components/PageLayout";
 import AnnouncementContent from "@/features/announcements/components/Announcements/AnnouncementContent";
 import { fetchAnnouncementById } from "@/features/announcements/services/announcementsService";
 import { getRelativeTime } from "@/lib/utils";
 
-export default async function Announcements({
-  params: { id },
-}: {
+type Props = {
   params: { id: string };
-}) {
+};
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const id = params.id;
+  const announcement = await fetchAnnouncementById(id);
+
+  if (!announcement) return {};
+
+  return {
+    title: announcement.title,
+    description: announcement.content,
+  };
+}
+
+export default async function Announcements({ params: { id } }: Props) {
   const announcement = await fetchAnnouncementById(id);
   if (announcement == null) return notFound();
 

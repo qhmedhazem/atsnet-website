@@ -1,7 +1,14 @@
+import type { Metadata } from "next";
 import { PageLayout } from "@/components/PageLayout";
 
 import ContactInfo from "@/features/contact/components/ContactInfo";
 import ContactForm from "@/features/contact/components/ContactForm";
+
+export const metadata: Metadata = {
+  title: "Contact",
+  description:
+    "El-Dabaa Nuclear School is a premier institution dedicated to educating and training the next generation of nuclear engineers and scientists.",
+};
 
 export default function About() {
   return (
