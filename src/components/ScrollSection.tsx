@@ -9,33 +9,34 @@ import {
   HTMLAttributes,
   FC,
 } from "react";
-import { motion } from "framer-motion";
+import { HTMLMotionProps, motion, MotionProps } from "framer-motion";
+import { cn } from "@/lib/utils";
 
 export interface ScrollCardProps<T = HTMLDivElement> extends HTMLAttributes<T> {
   isFirst: boolean;
   isLast: boolean;
   isReversed: boolean;
 
-  imageSrc: string;
-  imageAlt: string;
   step: number;
   isActivated: boolean;
 
   stepRef: Ref<HTMLSpanElement>;
+  imageSrc?: string;
+  imageAlt?: string;
 }
 
 export interface ScrollCardItem<T = HTMLDivElement> extends HTMLAttributes<T> {
-  imageSrc: string;
-  imageAlt: string;
+  imageSrc?: string;
+  imageAlt?: string;
   step: number;
 }
 
-interface Props {
+interface Props extends HTMLMotionProps<"span"> {
   Card: FC<ScrollCardProps>;
   items: ScrollCardItem[];
 }
 
-const ScrollSection: React.FC<Props> = ({ Card, items }) => {
+const ScrollSection: React.FC<Props> = ({ Card, items, ...props }) => {
   const [fillHeight, setFillHeight] = useState<number>(0);
   const [currentStep, setCurrentStep] = useState<number>(0);
   const container = useRef<HTMLDivElement>(null);
@@ -93,12 +94,14 @@ const ScrollSection: React.FC<Props> = ({ Card, items }) => {
   return (
     <div className="relative w-full my-16" ref={container}>
       <motion.span
-        className="absolute left-1/2 rounded-full bg-blue-500"
+        {...props}
+        className={cn(
+          "absolute left-1/2 rounded-full bg-blue-500 -translate-x-1/2 w-2 transition-all duration-0",
+          props.className
+        )}
         style={{
-          width: "8px",
           height: `${fillHeight}px`,
-          transform: "translateX(-50%)",
-          transition: "height 0s",
+          ...props.style,
         }}
       />
       <ul className="relative w-full flex flex-col gap-12 items-center">

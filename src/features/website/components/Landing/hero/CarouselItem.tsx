@@ -25,22 +25,27 @@ export const CarouselItem: FC<Props> = ({
         width={1920}
         height={1080}
         className="w-full h-full object-cover"
+        priority
       />
-      <div className="absolute inset-0 grid h-full w-full items-end bg-black/70">
-        <div className="space-y-8 max-w-sm mx-8 mb-24 md:max-w-3xl md:mx-12 md:mb-32 lg:mx-28 lg:mb-32">
-          <div className="space-y-2 md:space-y-4">
-            <Typography
-              variant="h1"
-              color="white"
-              className="text-3xl md:text-4xl lg:text-5xl"
-            >
-              {title}
-            </Typography>
-            <Typography variant="lead" color="white" className="opacity-80">
-              {description}
-            </Typography>
+      <div className="absolute inset-0 flex flex-col justify-center items-center bg-black/70">
+        <div className="absolute text-center space-y-4 max-w-md md:max-w-lg lg:max-w-5xl p-8 m-[0_auto]">
+          <Typography
+            variant="h1"
+            color="white"
+            className="text-3xl md:text-4xl lg:text-5xl font-bold"
+          >
+            {title}
+          </Typography>
+          <Typography
+            variant="lead"
+            color="white"
+            className="opacity-80 text-base md:text-lg lg:text-xl"
+          >
+            {description}
+          </Typography>
+          <div className="flex justify-center items-center gap-4 mt-4">
+            {children}
           </div>
-          <div className="flex gap-2">{children}</div>
         </div>
       </div>
     </div>

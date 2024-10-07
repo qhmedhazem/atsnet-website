@@ -13,8 +13,8 @@ const CurriculumCard: FC<{
 
   return (
     <motion.div
-      ref={ref}
       className="bg-white px-6 py-6 rounded-lg shadow-lg flex flex-col items-center gap-2 text-center space-y-4"
+      ref={ref}
       initial={{ opacity: 0, y: 50 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.5, ease: "easeOut" }}

@@ -3,11 +3,9 @@
 import Brand from "../Brand";
 import { NavbarMenu } from "./NavbarMenu";
 import { cn } from "@/lib/utils";
-import useMediaQuery from "@/hooks/use-media-query";
 import useScroll from "@/hooks/use-scroll";
 
 const Navbar = () => {
-  const isSmallMobile = useMediaQuery("(max-width: 450px)");
   const isScrolled = useScroll();
 
   return (
@@ -18,7 +16,7 @@ const Navbar = () => {
       )}
     >
       <div className="py-2 lg:py-3 px-6 md:px-16 flex justify-between items-center w-full h-full gap-16">
-        <Brand withDescription={isSmallMobile ? false : true} />
+        <Brand withDescription={false} />
         <NavbarMenu isScrolled={isScrolled} />
       </div>
     </div>

@@ -68,7 +68,6 @@ interface SidebarContentProps {
   onClose: () => void;
 }
 
-// Sidebar content extracted into a separate component for reuse
 export const SidebarContent: FC<SidebarContentProps> = ({ onClose }) => (
   <div className="w-full mt-8 flex flex-col gap-8">
     {/* User Section */}

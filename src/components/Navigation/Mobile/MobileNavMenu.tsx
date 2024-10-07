@@ -29,9 +29,9 @@ export default function MobileNavMenu({ isScrolled }: Props) {
   }, [isOpen]);
 
   return (
-    <>
+    <div className="relative inline-block lg:hidden">
       <button
-        className="text-primary flex flex-col items-center justify-center space-y-1 z-50 focus:outline-none"
+        className="relative text-primary flex flex-col items-center justify-center space-y-1 z-50 focus:outline-none"
         onClick={toggleMenu}
       >
         <motion.div
@@ -53,7 +53,7 @@ export default function MobileNavMenu({ isScrolled }: Props) {
         initial={{ opacity: 0, x: "-100%" }}
         animate={{ opacity: isOpen ? 1 : 0, x: isOpen ? 0 : "-100%" }}
         transition={{ duration: 0.4 }}
-        className={`fixed inset-0 bg-gray-900 bg-opacity-90 z-40 flex flex-col items-center justify-center space-y-6 overflow-y-auto`}
+        className={`fixed inset-0 bg-gray-900 bg-opacity-90 z-30 flex flex-col items-center justify-center space-y-6 overflow-y-auto`}
       >
         <Link
           href="/about"
@@ -98,11 +98,11 @@ export default function MobileNavMenu({ isScrolled }: Props) {
           Admission
         </Link>
         <Link
-          href="/extracurriculars"
+          href="/activities"
           className="text-white text-3xl"
           onClick={toggleMenu}
         >
-          Extracurriculars
+          Activities
         </Link>
         <Link
           href="/contact"
@@ -112,6 +112,6 @@ export default function MobileNavMenu({ isScrolled }: Props) {
           Contact Us
         </Link>
       </motion.div>
-    </>
+    </div>
   );
 }

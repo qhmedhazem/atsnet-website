@@ -84,9 +84,9 @@ export default function DesktopNavMenu(props: Props) {
         </NavigationMenuItem>
 
         <NavigationMenuItem>
-          <Link href="/extracurriculars" legacyBehavior passHref>
+          <Link href="/activities" legacyBehavior passHref>
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-              Extracurriculars
+              Activities
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>

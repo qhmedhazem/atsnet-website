@@ -15,7 +15,7 @@ const UpcomingEventsSection: FC<Props> = ({ events }) => {
         {events.map((a) => (
           <li
             key={a.id}
-            className="flex-1 m-2 flex-grow min-w-[320px] max-w-[320px]"
+            className="flex-1 m-2 flex-grow w-full min-w-[220px] max-w-[320px]"
           >
             <EventLandingCard key={a.id} event={a} />
           </li>

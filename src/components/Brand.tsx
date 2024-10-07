@@ -20,8 +20,12 @@ const Brand: FC<Props> = ({ withText = true, withDescription = true }) => {
       {withText && (
         <div>
           <p className="text-2xl font-bold">ATSNEE</p>
-          {withDescription && (
+          {withDescription ? (
             <p className="text-xs font-light">
+              Applied Technology School for Nuclear Energy in El-Dabaa
+            </p>
+          ) : (
+            <p className="hidden text-xs font-light md:inline">
               Applied Technology School for Nuclear Energy in El-Dabaa
             </p>
           )}

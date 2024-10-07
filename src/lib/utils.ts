@@ -1,8 +1,15 @@
 import Resizer from "react-image-file-resizer";
 import dayjs from "dayjs";
-import relativeTime from "dayjs/plugin/relativeTime";
 
+import relativeTime from "dayjs/plugin/relativeTime";
+import utc from "dayjs/plugin/utc";
+import timezone from "dayjs/plugin/timezone";
+import localizedFormat from "dayjs/plugin/localizedFormat";
+
+dayjs.extend(utc);
+dayjs.extend(timezone);
 dayjs.extend(relativeTime);
+dayjs.extend(localizedFormat);
 
 import { twMerge } from "tailwind-merge";
 import { type ClassValue, clsx } from "clsx";
@@ -81,6 +88,12 @@ export function getDayStartEndDates(givenDate: Date) {
     startOfDay,
     endOfDay,
   };
+}
+
+export function getCurrentDateInUserTimezone(date: Date) {
+  const userTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+  const currentDateInUserTimezone = dayjs(date).tz(userTimezone);
+  return currentDateInUserTimezone.format("LL");
 }
 
 export function getRelativeTime(date: Date) {

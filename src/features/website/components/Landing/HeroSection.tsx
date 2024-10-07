@@ -8,11 +8,11 @@ const HeroSection = () => {
   return (
     <section
       id="atsnet"
-      className="relative w-screen h-screen max-h-screen z-0"
+      className="relative w-screen h-screen max-h-[100vh] z-0 overflow-hidden"
     >
       <Carousel
         id="pageLayout"
-        className="w-full h-full max-h-screen"
+        className="w-full h-full max-h-[100vh]"
         prevArrow={() => null}
         nextArrow={() => null}
         autoplay={true}
@@ -23,7 +23,7 @@ const HeroSection = () => {
           title="Explore Advanced Nuclear Technology Education"
           description="The next generation of energy professionals."
           imageSrc="/landing2.jpg"
-          imageAlt="1234"
+          imageAlt="Explore Advanced Nuclear Technology"
         >
           <LinkButton
             size="lg"
@@ -51,7 +51,7 @@ const HeroSection = () => {
           title="Where Talent Meets Opportunity"
           description="A transparent and fair process to identify talented individuals for our programs."
           imageSrc="/landing6.jpg"
-          imageAlt="A transparent and fair process to identify talented individuals for our programs."
+          imageAlt="Where Talent Meets Opportunity"
         >
           <LinkButton
             size="lg"

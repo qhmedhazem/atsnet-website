@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import React, { FC } from "react";
 import {
@@ -12,23 +14,23 @@ const FooterSocialMediaLinks: FC = () => {
   return (
     <ul className="flex gap-4">
       <SocialMediaLink
-        href="https://facebook.com"
+        href={process.env.FACEBOOK_LINK as string}
         icon={<Facebook size={20} />}
       />
       <SocialMediaLink
-        href="https://linkedin.com"
+        href={process.env.LINKEDIN_LINK as string}
         icon={<Linkedin size={20} />}
       />
       <SocialMediaLink
-        href="https://instagram.com"
+        href={process.env.INSTAGRAM_LINK as string}
         icon={<Instagram size={20} />}
       />
       <SocialMediaLink
-        href="https://twitter.com"
+        href={process.env.EMAIL as string}
         icon={<MailIcon size={20} />}
       />
       <SocialMediaLink
-        href="https://twitter.com"
+        href={process.env.TELEPHONE as string}
         icon={<PhoneIcon size={20} />}
       />
     </ul>

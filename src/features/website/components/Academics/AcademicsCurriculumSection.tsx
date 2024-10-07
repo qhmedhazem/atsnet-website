@@ -1,5 +1,5 @@
 import { Atom, Radiation, ShieldAlert } from "lucide-react";
-import CurriculumCard from "./pre/CurriculumCard";
+import CurriculumCard from "./CurriculumCard";
 
 const AcademicsCurriculumSection = () => {
   return (

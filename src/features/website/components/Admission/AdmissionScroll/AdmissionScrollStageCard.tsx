@@ -47,7 +47,9 @@ const AdmissionScrollStageCard: FC<Props> = ({
       className={cn("w-full flex justify-between gap-20 relative", className)}
     >
       {isReversed && children}
-      {!isReversed && <StageImage imageSrc={imageSrc} imageAlt={imageAlt} />}
+      {!isReversed && imageSrc && imageAlt && (
+        <StageImage imageSrc={imageSrc} imageAlt={imageAlt} />
+      )}
       <div
         className={cn(
           "absolute w-full h-full flex justify-center",
@@ -81,7 +83,9 @@ const AdmissionScrollStageCard: FC<Props> = ({
         </motion.span>
       </div>
       {!isReversed && children}
-      {isReversed && <StageImage imageSrc={imageSrc} imageAlt={imageAlt} />}
+      {isReversed && imageSrc && imageAlt && (
+        <StageImage imageSrc={imageSrc} imageAlt={imageAlt} />
+      )}
     </div>
   );
 };

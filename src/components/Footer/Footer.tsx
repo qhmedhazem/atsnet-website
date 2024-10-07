@@ -89,8 +89,8 @@ const Footer = () => {
                       href: "/admission",
                     },
                     {
-                      title: "Extracurriculars",
-                      href: "/extracurriculars",
+                      title: "Activities",
+                      href: "/activities",
                     },
                     {
                       title: "Contact us",
